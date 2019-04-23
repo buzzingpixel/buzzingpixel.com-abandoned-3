@@ -19,6 +19,7 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
             <exclude>
+                <directory>src/Common/Infrastructure/Atlas/DataSource</directory>
             </exclude>
         </whitelist>
     </filter>

@@ -12,9 +12,30 @@
     ],
     "require": {
         "php": "^7.2",
+        "buzzingpixel/cookie-api": "^2.0",
         "buzzingpixel/corbomite-cli": "^1.0",
+        "buzzingpixel/corbomite-db": "^1.4",
+        "buzzingpixel/corbomite-di": "^1.2",
+        "buzzingpixel/corbomite-events": "^2.1",
+        "buzzingpixel/corbomite-flash-data": "^1.2",
         "buzzingpixel/corbomite-http": "^2.2",
-        "symfony/var-dumper": "^4.2"
+        "buzzingpixel/corbomite-mailer": "^1.1",
+        "buzzingpixel/corbomite-migrations": "^1.1",
+        "buzzingpixel/corbomite-queue": "^1.3",
+        "buzzingpixel/corbomite-schedule": "^1.2",
+        "buzzingpixel/corbomite-twig": "^1.2",
+        "buzzingpixel/corbomite-user": "^3.1",
+        "buzzingpixel/request-data-store": "^1.0",
+        "buzzingpixel/twig-filetime": "^1.0",
+        "buzzingpixel/twig-getenv": "^1.0",
+        "buzzingpixel/twig-smartypants": "^1.0",
+        "buzzingpixel/twig-switch": "^1.0",
+        "buzzingpixel/twig-truncate": "^1.0",
+        "buzzingpixel/twig-ucfirst": "^1.0",
+        "buzzingpixel/twig-widont": "^1.0",
+        "cocur/slugify": "^3.2",
+        "symfony/var-dumper": "^4.2",
+        "timostamm/text-truncation": "dev-master"
     },
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.26.2",
@@ -40,5 +61,16 @@
         "bin-compat": "full",
         "optimize-autoloader": true,
         "sort-packages": true
+    },
+    "extra": {
+        "cliActionConfigFilePath": "config/cliActions.php",
+        "corbomiteHttpConfig": {
+            "disableCsrfMiddlewareDevMode": true
+        },
+        "diConfigFilePath": "config/di.php",
+        "eventCollectorConfigFilePath": "config/eventListeners.php",
+        "httpActionConfigFilePath": "config/httpActions.php",
+        "httpRouteConfigFilePath": "config/httpRoutes.php",
+        "scheduleConfigFilePath": "config/schedule.php"
     }
 }
