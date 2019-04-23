@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use corbomite\cli\Kernel;
+use corbomite\di\Di;
+
+require __DIR__ . '/config/bootstrap.php';
+
+require __DIR__ . '/config/devMode.php';
+
+/** @noinspection PhpUnhandledExceptionInspection */
+Di::diContainer()->get(Kernel::class)($argv);
