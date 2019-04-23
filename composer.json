@@ -11,10 +11,17 @@
         }
     ],
     "require": {
-        "php": "^7.2"
+        "php": "^7.2",
+        "symfony/var-dumper": "^4.2"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master"
+        "codedungeon/phpunit-result-printer": "^0.26.2",
+        "doctrine/coding-standard": "^6.0",
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "phpmd/phpmd": "^2.6",
+        "phpunit/phpunit": "^8.1",
+        "roave/security-advisories": "dev-master",
+        "squizlabs/php_codesniffer": "^3.4"
     },
     "autoload": {
         "psr-4": {

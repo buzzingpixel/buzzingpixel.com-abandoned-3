@@ -14,8 +14,8 @@
 
 .php_cs.cache
 .phpunit.result.cache
+/.env.override
 /*-workspace
-/.env
 /node_modules
 /*.sublime-*
 /vendor/*
