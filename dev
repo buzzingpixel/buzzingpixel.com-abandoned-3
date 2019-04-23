@@ -55,6 +55,8 @@ if [[ "${cmd}" = "up" ]] || [[ "${cmd}" = "run" ]]; then
     if [[ "${cmd}" != "run" ]]; then
         docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab --build-only"
     fi
+
+    (cd platform && yarn && cd ..)
 fi
 
 ## If the command is run, then we want to run the build process and watch for changes

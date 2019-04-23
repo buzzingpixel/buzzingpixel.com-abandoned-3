@@ -71,6 +71,9 @@
         "eventCollectorConfigFilePath": "config/eventListeners.php",
         "httpActionConfigFilePath": "config/httpActions.php",
         "httpRouteConfigFilePath": "config/httpRoutes.php",
-        "scheduleConfigFilePath": "config/schedule.php"
+        "scheduleConfigFilePath": "config/schedule.php",
+        "twigTemplatesDirectories": {
+            "": "templates"
+        }
     }
 }

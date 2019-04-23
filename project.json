@@ -1,0 +1,14 @@
+{
+    "enableESLint": true,
+    "enableJSCS": false,
+    "enableJSHint": false,
+    "fileSync": {
+    },
+    "proxy": "http://buzzingpixel.test",
+    "watch": [
+        "config/**",
+        "src/**",
+        "templates/**"
+    ],
+    "watchUsesPolling": true
+}

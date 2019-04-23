@@ -90,4 +90,8 @@ exit /b 0
     if not "%1%" == "run" (
         docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab --build-only"
     )
+
+    cd platform
+    yarn
+    cd ..
 exit /b 0
