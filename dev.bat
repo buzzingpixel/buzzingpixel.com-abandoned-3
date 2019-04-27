@@ -21,32 +21,32 @@ if "%cmd%" == "" (
 )
 
 :: If command is up or run, we need to run the docker containers and install composer and yarn dependencies
-if "%1%" == "up" (
+if "%cmd%" == "up" (
     set valid=true
     call :up
 )
 
 :: If the command is run, then we want to run the build process and watch for changes
-if "%1%" == "run" (
+if "%cmd%" == "run" (
     set valid=true
     call :up
     docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab"
 )
 
 :: If the command is down, then we want to stop docker
-if "%1%" == "down" (
+if "%cmd%" == "down" (
     set valid=true
     docker-compose -f docker-compose.yml -p buzzingpixel down
 )
 
 :: Run phpunit if requested
-if "%1%" == "phpunit" (
+if "%cmd%" == "phpunit" (
     set valid=true
     docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpunit && /app/vendor/bin/phpunit --configuration /app/phpunit.xml %allArgsExceptFirst%"
 )
 
 :: Run yarn if requested
-if "%1%" == "yarn" (
+if "%cmd%" == "yarn" (
     set valid=true
     docker kill node-buzzingpixel
     docker-compose -f docker-compose.yml -p buzzingpixel up -d
@@ -54,19 +54,19 @@ if "%1%" == "yarn" (
 )
 
 :: Run cli if requested
-if "%1%" == "cli" (
+if "%cmd%" == "cli" (
     set valid=true
     docker exec -it --user root --workdir /app-www php-buzzingpixel bash -c "php %allArgs%"
 )
 
 :: Run composer if requested
-if "%1%" == "composer" (
+if "%cmd%" == "composer" (
     set valid=true
     docker exec -it --user root --workdir /app php-buzzingpixel bash -c "%allArgs%"
 )
 
 :: Login to a container if requested
-if "%1%" == "login" (
+if "%cmd%" == "login" (
     set valid=true
     docker exec -it --user root %secondArg%-buzzingpixel bash
 )
@@ -87,11 +87,11 @@ exit /b 0
     docker exec -it --user root --workdir /app php-buzzingpixel bash -c "cd /app && composer install"
     docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn"
 
-    if not "%1%" == "run" (
+    if not "%cmd%" == "run" (
         docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab --build-only"
     )
 
     cd platform
-    yarn
+    call yarn
     cd ..
 exit /b 0
