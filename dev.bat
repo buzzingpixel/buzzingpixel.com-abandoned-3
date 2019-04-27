@@ -23,13 +23,13 @@ if "%cmd%" == "" (
 :: If command is up or run, we need to run the docker containers and install composer and yarn dependencies
 if "%1%" == "up" (
     set valid=true
-    call up
+    call :up
 )
 
 :: If the command is run, then we want to run the build process and watch for changes
 if "%1%" == "run" (
     set valid=true
-    call up
+    call :up
     docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab"
 )
 
