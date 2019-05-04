@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\HomePage\GetHomePage\HomePageAction;
 use FastRoute\RouteCollector;
 
 /**
@@ -10,5 +11,4 @@ use FastRoute\RouteCollector;
 
 /** @var RouteCollector $r */
 
-// Example:
-// $r->addRoute('GET', '/some-route', SomeClass::class);
+$r->get('/', HomePageAction::class);
