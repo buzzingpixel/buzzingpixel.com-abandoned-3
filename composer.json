@@ -10,6 +10,12 @@
             "homepage": "https://buzzingpixel.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/buzzingpixel/scribble.git"
+        }
+    ],
     "require": {
         "php": "^7.2",
         "buzzingpixel/cookie-api": "^2.0",
@@ -26,6 +32,7 @@
         "buzzingpixel/corbomite-twig": "^1.2",
         "buzzingpixel/corbomite-user": "^3.1",
         "buzzingpixel/request-data-store": "^1.0",
+        "buzzingpixel/scribble": "dev-master",
         "buzzingpixel/twig-filetime": "^1.0",
         "buzzingpixel/twig-getenv": "^1.0",
         "buzzingpixel/twig-smartypants": "^1.0",
@@ -34,6 +41,7 @@
         "buzzingpixel/twig-ucfirst": "^1.0",
         "buzzingpixel/twig-widont": "^1.0",
         "cocur/slugify": "^3.2",
+        "hyn/frontmatter": "dev-master",
         "symfony/var-dumper": "^4.2",
         "timostamm/text-truncation": "dev-master"
     },

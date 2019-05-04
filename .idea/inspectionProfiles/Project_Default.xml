@@ -23,6 +23,10 @@
       <option name="INSTALLED_PATHS" value="$PROJECT_DIR$/vendor/doctrine/coding-standard/lib/Doctrine" />
       <option name="CHECK_JS" value="false" />
       <option name="CHECK_CSS" value="false" />
+      <option name="EXTENSIONS" value="php,inc" />
+    </inspection_tool>
+    <inspection_tool class="PhpDocSignatureInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ALLOW_MISSING_PARAMETERS" value="true" />
     </inspection_tool>
   </profile>
 </component>

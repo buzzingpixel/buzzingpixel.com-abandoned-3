@@ -174,6 +174,10 @@
       <path value="$PROJECT_DIR$/vendor/buzzingpixel/twig-ucfirst" />
       <path value="$PROJECT_DIR$/vendor/buzzingpixel/twig-widont" />
       <path value="$PROJECT_DIR$/vendor/buzzingpixel/twig-truncate" />
+      <path value="$PROJECT_DIR$/vendor/adbario/php-dot-notation" />
+      <path value="$PROJECT_DIR$/vendor/cebe/markdown" />
+      <path value="$PROJECT_DIR$/vendor/hyn/frontmatter" />
+      <path value="$PROJECT_DIR$/vendor/buzzingpixel/scribble" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

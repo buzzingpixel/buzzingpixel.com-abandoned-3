@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/config" isTestSource="false" packagePrefix="Config\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/2bj/phanybar" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/adbario/php-dot-notation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/atlas/cli" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/atlas/info" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/atlas/mapper" />
@@ -29,6 +30,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/buzzingpixel/corbomite-user" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/buzzingpixel/minify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/buzzingpixel/request-data-store" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/buzzingpixel/scribble" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/buzzingpixel/twig-filetime" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/buzzingpixel/twig-getenv" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/buzzingpixel/twig-smartypants" />
@@ -43,6 +45,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/datasource" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/log" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/utility" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cebe/markdown" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/clue/stream-filter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cocur/slugify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/codedungeon/php-cli-colors" />
@@ -62,6 +65,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/hassankhan/config" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/html2text/html2text" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyn/frontmatter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/httpauth" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-highlighter" />

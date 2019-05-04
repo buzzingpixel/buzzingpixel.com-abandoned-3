@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="BuzzingPixel JS Files" pattern="file[buzzingpixel.com]:assetsSource/js//*" />
+</component>
