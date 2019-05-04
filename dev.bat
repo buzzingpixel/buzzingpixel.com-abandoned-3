@@ -13,6 +13,8 @@ if "%cmd%" == "" (
     echo   .\dev up
     echo   .\dev run
     echo   .\dev down
+    echo   .\dev test
+    echo   .\dev phpstan [args]
     echo   .\dev phpunit [args]
     echo   .\dev yarn [args]
     echo   .\dev cli [args]
@@ -37,6 +39,25 @@ if "%cmd%" == "run" (
 if "%cmd%" == "down" (
     set valid=true
     docker-compose -f docker-compose.yml -p buzzingpixel down
+)
+
+:: Run test if requested
+if "%cmd%" == "test" (
+    set valid=true
+    call :phpstan
+    call :phpunit
+)
+
+:: Run phpstan if requested
+if "%cmd%" == "phpstan" (
+    set valid=true
+    call :phpstan
+)
+
+:: Run phpunit if requested
+if "%cmd%" == "phpunit" (
+    set valid=true
+    call :phpunit
 )
 
 :: Run phpunit if requested
@@ -94,4 +115,14 @@ exit /b 0
     cd platform
     call yarn
     cd ..
+exit /b 0
+
+:: phpstan function
+:phpstan
+    docker exec -it --user root --workdir /app php-scribble bash -c "chmod +x /app/vendor/bin/phpstan && /app/vendor/bin/phpstan analyse src %allArgsExceptFirst%"
+exit /b 0
+
+:: phpunit function
+:phpunit
+    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpunit && /app/vendor/bin/phpunit --configuration /app/phpunit.xml %allArgsExceptFirst%"
 exit /b 0

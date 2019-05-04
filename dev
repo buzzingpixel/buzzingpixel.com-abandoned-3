@@ -36,6 +36,8 @@ if [[ -z "${cmd}" ]]; then
     printf "  ./dev up\n";
     printf "  ./dev run\n";
     printf "  ./dev down\n";
+    printf "  ./dev test";
+    printf "  ./dev phpstan [args]\n";
     printf "  ./dev phpunit [args]\n"
     printf "  ./dev yarn [args]\n"
     printf "  ./dev cli [args]\n"
@@ -71,8 +73,14 @@ if [[ "${cmd}" = "down" ]]; then
     docker-compose -f docker-compose.yml -p buzzingpixel down
 fi
 
+## Run phpstan if requested
+if [[ "${cmd}" = "phpstan" ]] || [[ "${cmd}" = "test" ]]; then
+    valid=true;
+    docker exec -it --user root --workdir /app php-scribble bash -c "chmod +x /app/vendor/bin/phpstan && /app/vendor/bin/phpstan analyse src ${allArgsExceptFirst}"
+fi
+
 ## Run phpunit if requested
-if [[ "${cmd}" = "phpunit" ]]; then
+if [[ "${cmd}" = "phpunit" ]] || [[ "${cmd}" = "test" ]]; then
     valid=true;
     docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpunit && /app/vendor/bin/phpunit --configuration /app/phpunit.xml ${allArgsExceptFirst}"
 fi
