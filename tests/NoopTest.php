@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class NoopTest extends TestCase
 {
-    public function testNoop() : void
+    public function testAssertNoopReturnsNull() : void
     {
         self::assertNull((new Noop())());
     }
