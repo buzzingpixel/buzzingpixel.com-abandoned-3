@@ -60,12 +60,6 @@ if "%cmd%" == "phpunit" (
     call :phpunit
 )
 
-:: Run phpunit if requested
-if "%cmd%" == "phpunit" (
-    set valid=true
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpunit && /app/vendor/bin/phpunit --configuration /app/phpunit.xml %allArgsExceptFirst%"
-)
-
 :: Run yarn if requested
 if "%cmd%" == "yarn" (
     set valid=true
