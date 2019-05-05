@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalDependencies">
+    <plugin id="BashSupport" />
+    <plugin id="CMD Support" />
+    <plugin id="JavaScript" />
+    <plugin id="NEON support" />
     <plugin id="com.intellij.database" />
     <plugin id="com.intellij.plugins.watcher" />
+    <plugin id="com.jetbrains.twig" />
+    <plugin id="fr.adrienbrault.idea.symfony2plugin" />
+    <plugin id="mobi.hsz.idea.gitignore" />
     <plugin id="org.editorconfig.editorconfigjetbrains" />
+    <plugin id="org.intellij.plugins.markdown" />
+    <plugin id="org.intellij.plugins.postcss" />
+    <plugin id="ru.adelf.idea.dotenv" />
   </component>
 </project>
