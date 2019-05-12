@@ -2,13 +2,12 @@
     "enableESLint": true,
     "enableJSCS": false,
     "enableJSHint": false,
-    "fileSync": {
-    },
+    "jsOneToOneMode": true,
     "proxy": "http://buzzingpixel.test",
     "watch": [
+        "assetsSource/templates/**",
         "config/**",
-        "src/**",
-        "templates/**"
+        "src/**"
     ],
     "watchUsesPolling": true
 }

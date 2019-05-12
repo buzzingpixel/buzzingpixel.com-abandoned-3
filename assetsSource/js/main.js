@@ -1,15 +1,8 @@
-// Make sure FAB is defined
-window.FAB = window.FAB || {};
+/* eslint-disable no-new */
+import router from './router.js';
 
-function runMain (F, W) {
-    if (!window.jQuery
-        || !F.controller
-        || !F.model
-    ) {
-        setTimeout(() => {
-            runMain(F, W);
-        }, 1);
-    }
-}
-
-runMain(window.FAB, window);
+// noinspection TypeScriptUMDGlobal,ES6ModulesDependencies
+new Vue({
+    router,
+    el: '#app',
+});

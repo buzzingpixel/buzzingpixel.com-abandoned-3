@@ -83,7 +83,7 @@
         "httpRouteConfigFilePath": "config/httpRoutes.php",
         "scheduleConfigFilePath": "config/schedule.php",
         "twigTemplatesDirectories": {
-            "": "templates"
+            "": "assetsSource/templates"
         }
     }
 }
