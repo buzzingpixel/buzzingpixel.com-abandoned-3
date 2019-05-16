@@ -1,5 +1,8 @@
 language: php
 
+env:
+  - ENCRYPTION_KEY=1234567890qwertyuiopasdfghjklzxc
+
 php:
   - "7.2"
 
