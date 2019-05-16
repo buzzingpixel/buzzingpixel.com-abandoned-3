@@ -4,5 +4,10 @@
     <option name="directoryToWeb" value="public" />
     <option name="pluginEnabled" value="true" />
     <option name="lastServiceGeneratorLanguage" value="yaml" />
+    <option name="twigNamespaces">
+      <list>
+        <twig_namespace custom="true" namespaceType="ADD_PATH" path="assetsSource/templates" />
+      </list>
+    </option>
   </component>
 </project>
