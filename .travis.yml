@@ -6,6 +6,11 @@ env:
 php:
   - "7.2"
 
+install:
+  # Manually install libsodium, because the TravicCi image doesn't provide PHP7.2 with libsodium
+  - pecl install libsodium
+  - echo "extension=sodium.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
 before_script: composer install --no-suggest --no-progress
 
 script:
