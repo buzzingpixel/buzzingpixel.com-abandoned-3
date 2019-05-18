@@ -1,0 +1,113 @@
+.SiteNav {
+    background-color: var(--DeepSea);
+    box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.55);
+    height: 100%;
+    left: 0;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    width: auto;
+    z-index: 999;
+
+    /* Make sure iOS uses scrolling */
+    -webkit-overflow-scrolling: touch;
+
+    -ms-overflow-style: none;
+}
+
+.SiteNav::-webkit-scrollbar {
+    display: none;
+}
+
+.SiteNav__List {
+    list-style: none;
+    margin: 5px 5px;
+}
+
+.SiteNav__ListItem {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.SiteNav__ListItem--IsIconBased {
+    overflow: hidden;
+    width: 30px;
+}
+
+.SiteNav--IsActive .SiteNav__ListItem--IsIconBased {
+    width: auto;
+}
+
+.SiteNav__ListItemInner,
+a.SiteNav__ListItemInner {
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.SiteNav__ListItemInner:hover {
+    color: var(--CaribbeanGreen);
+}
+
+.SiteNav__ListItemBadge {
+    background-color: var(--Meteor);
+    border: 2px solid #fff;
+    border-radius: 20px;
+    bottom: 6px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.55);
+    color: #fff;
+    display: inline-block;
+    font-size: 8px;
+    line-height: 1em;
+    padding: 4px;
+    position: absolute;
+    left: 30px;
+    transform: translate(-100%);
+}
+
+.SiteNav__ListItemBadge--IsHidden {
+    display: none;
+}
+
+.SiteNav__ListItemIcon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.SiteNav__ListItemIcon svg {
+    width: 30px;
+}
+
+.SiteNav__ListItemIcon--IsLogo svg {
+    width: 69px;
+}
+
+.SiteNav__ListItemIcon--IsMoreExpander svg {
+    transition: transform 0.25s;
+}
+
+.SiteNav--IsActive .SiteNav__ListItemIcon--IsMoreExpander svg {
+    transform: rotate(135deg);
+}
+
+.SiteNav__ListItemContent {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.SiteNav__ListItemContent--IsBesideLogo {
+    margin-left: 4px;
+    margin-top: -2px;
+}
+
+.SiteNav__ListItemContent--IsHidden {
+    @mixin HideElement;
+}
+
+.SiteNav__ListItem--IsNotPersistent {
+    display: none;
+}
+
+.SiteNav--IsActive .SiteNav__ListItem--IsNotPersistent {
+    display: block;
+}

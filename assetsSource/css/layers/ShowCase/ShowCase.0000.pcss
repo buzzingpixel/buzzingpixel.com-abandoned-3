@@ -1,0 +1,117 @@
+.ShowCase {
+    text-align: center;
+}
+
+.ShowCase__Inner {
+    margin: 0 auto;
+    max-width: 1600px;
+    padding: 14px;
+}
+
+.ShowCase__PreHeadLine,
+.ShowCase__Headline,
+.ShowCase__SubHeadline,
+.ShowCase__CTA {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.ShowCase__SubHeadline {
+    margin-bottom: 20px;
+}
+
+.ShowCase__CTA {
+    margin-bottom: 30px;
+}
+
+.ShowCase__PreHeadLine,
+.ShowCase__Headline,
+.ShowCase__SubHeadline {
+    color: var(--MineShaft);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ShowCase--IsOverDark .ShowCase__PreHeadLine,
+.ShowCase--IsOverDark .ShowCase__Headline,
+.ShowCase--IsOverDark .ShowCase__SubHeadline {
+    color: var(--AquaHaze);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.48);
+}
+
+.ShowCase__PreHeadLine {
+    font-family: var(--SecondaryFont);
+    font-size: 18px;
+}
+
+.ShowCase__Headline {
+    font-family: var(--SecondaryFont);
+    font-size: 40px;
+    font-weight: var(--SecondaryFontBoldWeight);
+    text-transform: uppercase;
+}
+
+.ShowCase__SubHeadline {
+    font-family: var(--PrimaryFont);
+    font-size: 16px;
+    font-weight: var(--PrimaryFontThinWeight);
+}
+
+.ShowCase__CTAInner {
+    background-color: var(--Meteor);
+    border-radius: 6px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.ShowCase--IsOverDark .ShowCase__CTAInner {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.ShowCase__CTALink {
+    color: var(--AquaHaze);
+    display: inline-block;
+    margin-right: -2px;
+    padding: 10px;
+    position: relative;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.ShowCase__CTALink:before {
+    background-color: rgba(255, 255, 255, 0.23);
+    content: ' ';
+    width: 2px;
+    height: 80%;
+    left: -1px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.ShowCase__CTALink:first-child:before {
+    display: none;
+}
+
+.ShowCase__CTALink:last-child {
+    margin-right: 0;
+}
+
+.ShowCase__CTALink:hover,
+.ShowCase__CTALink:focus,
+.ShowCase__CTALink:active {
+    background-color: var(--PumpkinSkin);
+    color: var(--AquaHaze);
+    text-decoration: none;
+}
+
+.ShowCase__ImageWrapper {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.35);
+    display: inline-block;
+}
+
+.ShowCase__Image {
+    display: block;
+    width: 100%;
+}

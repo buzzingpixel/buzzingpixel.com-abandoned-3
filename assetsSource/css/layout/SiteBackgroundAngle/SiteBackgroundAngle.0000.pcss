@@ -1,0 +1,27 @@
+.SiteBackgroundAngle {
+    height: 100%;
+    left: 0;
+    max-height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.SiteBackgroundAngle:before {
+    background-color: var(--DeepSea);
+    background-image: url('/assets/img/asfalt-dark.png');
+    top: 180px;
+    content: ' ';
+    display: block;
+    height: 80px;
+    opacity: 0.3;
+    position: absolute;
+    right: -30px;
+    transform: skewY(-24deg);
+    width: 120%;
+}
+
+.SiteBackgroundAngle--HasHeadingBackground:before {
+    top: 250px;
+}

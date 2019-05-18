@@ -1,0 +1,37 @@
+.HeadingBackground {
+    border-bottom: 10px solid var(--DeepSea);
+    border-top: 10px solid var(--Meteor);
+    height: 200px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.HeadingBackground:before {
+    background-color: var(--DeepSea);
+    background-image: url('/assets/img/asfalt-dark.png');
+    bottom: 50px;
+    content: ' ';
+    display: block;
+    height: 80px;
+    opacity: 0.6;
+    position: absolute;
+    right: -30px;
+    transform: skewY(24deg);
+    width: 120%;
+    z-index: 9;
+}
+
+.HeadingBackground__Inner {
+    position: relative;
+    z-index: 1;
+}
+
+.HeadingBackground__Img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
