@@ -1,0 +1,88 @@
+{% set preHeadline = (block('preHeadline') ?? preHeadline ?? '') %}
+{% set headline = (block('headline') ?? headline ?? '') %}
+{% set headlineAsH1 = (block('headlineAsH1') ?? headlineAsH1 ?? '')|trim %}
+{% set headlineAsH1 = headlineAsH1 is same as(true) or
+    headlineAsH1 is same as('true') or
+    headlineAsH1 is same as(1) or
+    headlineAsH1 is same as ('1')
+%}
+{% set subHeadline = (block('subHeadline') ?? subHeadline ?? '') %}
+{% set cta = cta ?? [] %}
+{% set cta = cta is iterable ? cta : [] %}
+{% set showCaseImage = showCaseImage ?? {} %}
+{% set overDark = (block('overDark') ?? overDark ?? '')|trim %}
+{% set overDark = overDark is same as(true) or
+    overDark is same as('true') or
+    overDark is same as(1) or
+    overDark is same as ('1')
+%}
+
+<div class="ShowCase{% if overDark %} ShowCase--IsOverDark{% endif %}">
+    <div class="ShowCase__Inner">
+        {% if preHeadline %}
+            <span class="ShowCase__PreHeadLine">
+                {{ preHeadline|smartypants }}
+            </span>
+        {% endif %}
+        {% if headline %}
+            {% if headlineAsH1 %}
+                <h1 class="ShowCase__Headline">
+            {% else %}
+                <h2 class="ShowCase__Headline">
+            {% endif %}
+            {{ headline|smartypants }}
+            {% if not headlineAsH1 %}
+                </h2>
+            {% else %}
+                </h1>
+            {% endif %}
+        {% endif %}
+        {% if subHeadline %}
+            {% if headlineAsH1 %}
+                <h2 class="ShowCase__SubHeadline">
+            {% else %}
+                <h3 class="ShowCase__SubHeadline">
+            {% endif %}
+            {{ subHeadline|smartypants }}
+            {% if not headlineAsH1 %}
+                </h3>
+            {% else %}
+                </h2>
+            {% endif %}
+        {% endif %}
+        {% if cta|length %}
+            <div class="ShowCase__CTA">
+                <div class="ShowCase__CTAInner">
+                    {% for item in cta %}
+                        <a href="{{ item.href }}" class="ShowCase__CTALink">
+                            {{ item.content|smartypants }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        {% if showCaseImage['baseImage'] is defined %}
+            <div class="ShowCase__ImageWrapper">
+                <picture>
+                    {% if showCaseImage['sizes'] is defined %}
+                        {% for image in showCaseImage.sizes %}
+                            <source
+                                srcset="{{ image['1x'] }} 1x{% if image['2x'] is defined %}, image['2x']{{ image['2x'] }} 2x{% endif %}"
+                                media="{{ image.mediaQuery }}"
+                            >
+                        {% endfor %}
+                    {% endif %}
+                    <img
+                        src="{{ showCaseImage.baseImage }}"
+                        {% if showCaseImage['baseImage2x'] is defined %}
+                            srcset="{{ showCaseImage.baseImage }} 1x,
+                                {{ showCaseImage.baseImage2x }} 2x"
+                        {% endif %}
+                        alt="{{ showCaseImage['alt'] ?? '' }}"
+                        class="ShowCase__Image"
+                    >
+                </picture>
+            </div>
+        {% endif %}
+    </div>
+</div>

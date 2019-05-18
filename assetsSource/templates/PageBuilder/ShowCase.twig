@@ -1,0 +1,8 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content content #}
+{# @var bool hasHeadingBackground #}
+
+{% set payload = content.meta %}
+
+{% include 'Layers/ShowCase.twig' with payload|merge({
+    overDark: hasHeadingBackground,
+}) %}

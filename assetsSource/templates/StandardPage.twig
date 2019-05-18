@@ -3,10 +3,21 @@
 {# @var \BuzzingPixel\Scribble\Services\GetContentFromPath\ContentCollection contentCollection #}
 {% set contentCollection = contentCollection ?? null %}
 
+{% set hasHeadingBackground = false %}
+
 {% extends '_Layout.twig' %}
 
+{% if index %}
+    {% set noIndex = index.getMetaItem('noIndex') == true %}
+    {% set metaTitle = index.getMetaItem('metaTitle') %}
+    {% set metaDescription = index.getMetaItem('metaDescription') %}
+    {% set headingBackground = index.getMetaItem('headingBackground') %}
+    {% set hasHeadingBackground = headingBackground['href'] is defined %}
+{% endif %}
+
 {% block content %}
-    Hello World
-    {# {{ dump(index) }}
-    {{ dump(contentCollection) }} #}
+    {% include 'PageBuilder/_Includer.twig' with {
+        contentCollection: contentCollection,
+        hasHeadingBackground: hasHeadingBackground
+    } only %}
 {% endblock %}
