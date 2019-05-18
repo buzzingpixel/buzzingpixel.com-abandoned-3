@@ -11,7 +11,9 @@
 
     {% switch layerType %}
         {% case 'ShowCase' %}
-            {% include 'pageBuilder/ShowCase.twig' with payload only %}
+            {% include 'PageBuilder/ShowCase.twig' with payload only %}
+        {% case 'CallOut' %}
+            {% include 'PageBuilder/CallOut.twig' with payload only %}
         {% default %}
             {% if getenv('DEV_MODE') == 'true' %}
                 <div style="text-align: center;">

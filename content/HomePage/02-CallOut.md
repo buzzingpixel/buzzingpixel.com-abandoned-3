@@ -7,7 +7,7 @@
             "Drag and drop uploading",
             "User-friendly, non-destructive image manipulation",
             "Min and max image size constraints per-field",
-            "Aspect ratio contraints",
+            "Aspect ratio constraints",
             "Supports Grid (EE), Fluid (EE), Low Variables (EE), Matrix (Craft), and Super Table (Craft)"
         ],
         "cta": [

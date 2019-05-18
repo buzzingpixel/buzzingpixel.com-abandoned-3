@@ -1,0 +1,26 @@
+{# @var array primary #}
+{% set primary = primary ?? [] %}
+{# @var array left #}
+{% set left = left ?? [] %}
+{# #var array right #}
+{% set right = right ?? [] %}
+
+{% import 'LayerSupport/CalloutItemMacro.twig' as CalloutItem %}
+
+<section class="CallOut">
+    <div class="CallOut__Inner">
+        {% if left %}
+            <div class="CallOut__Item CallOut__Item--IsLeftItem">
+                {{ CalloutItem.Item(left) }}
+            </div>
+        {% endif %}
+        <div class="CallOut__Item CallOut__Item--IsPrimaryItem">
+            {{ CalloutItem.Item(primary) }}
+        </div>
+        {% if right %}
+            <div class="CallOut__Item CallOut__Item--IsRightItem">
+                {{ CalloutItem.Item(right) }}
+            </div>
+        {% endif %}
+    </div>
+</section>

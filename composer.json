@@ -35,6 +35,7 @@
         "buzzingpixel/scribble": "dev-master",
         "buzzingpixel/twig-filetime": "^1.0",
         "buzzingpixel/twig-getenv": "^1.0",
+        "buzzingpixel/twig-markdown": "^1.0",
         "buzzingpixel/twig-smartypants": "^1.0",
         "buzzingpixel/twig-switch": "^1.0",
         "buzzingpixel/twig-truncate": "^1.0",

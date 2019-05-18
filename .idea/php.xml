@@ -190,6 +190,7 @@
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-deprecation-rules" />
       <path value="$PROJECT_DIR$/vendor/nette/php-generator" />
       <path value="$PROJECT_DIR$/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/vendor/buzzingpixel/twig-markdown" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

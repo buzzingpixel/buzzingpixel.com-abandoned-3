@@ -1,0 +1,41 @@
+{% macro Item(payload) %}
+    <header class="CallOut__ItemTitle">
+        {{ (payload.title ?? '')|smartypants }}
+    </header>
+    <section class="CallOut__ItemBody">
+        {% set bodyContent = payload.bodyContent ?? '' %}
+        {% if bodyContent %}
+            <div class="CallOut__ItemBodyContent">
+                {{ bodyContent|smartypants }}
+            </div>
+        {% endif %}
+        {% set bullets = payload.bullets ?? [] %}
+        {% if bullets|length %}
+            <ul class="CallOut__ItemBodyBullets">
+                {% for bullet in bullets %}
+                    <li class="CallOut__ItemBodyBullet">
+                        {{ bullet|markdownParseParagraph|smartypants }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% set cta = payload.cta ?? [] %}
+        {% if cta %}
+            <div class="CallOut__ItemBodyCta">
+                <div class="CallOut__ItemBodyCtaInner">
+                    {% for link in cta %}
+                        <a href="{{ link.href }}" class="CallOut__ItemBodyCtaLink">
+                            {{ link.content|smartypants }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        {% set footerContent = payload.footerContent ?? '' %}
+        {% if footerContent %}
+            <footer class="CallOut__ItemBodyFooterContent">
+                {{ footerContent|markdownParseParagraph|smartypants }}
+            </footer>
+        {% endif %}
+    </section>
+{% endmacro %}
