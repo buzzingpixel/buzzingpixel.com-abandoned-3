@@ -1,0 +1,55 @@
+{% set nav = nav ?? [] %}
+{% set persistentItems = nav['persistentItems'] ?? [] %}
+{% set items = nav['items'] ?? [] %}
+
+<nav
+    class="SiteNav JS-SiteNav"
+    data-active-class="SiteNav--IsActive"
+>
+    <ul class="SiteNav__List">
+        <li class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased">
+            <a href="/" class="SiteNav__ListItemInner">
+                <span class="SiteNav__ListItemIcon SiteNav__ListItemIcon--IsLogo">
+                    {% include 'Svg/LogoWide.svg' %}
+                </span>
+                <span class="SiteNav__ListItemContent SiteNav__ListItemContent--IsBesideLogo SiteNav__ListItemContent--IsHidden">
+                    BuzzingPixel.com
+                </span>
+            </a>
+        </li>
+        {% for item in persistentItems %}
+            <li class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased">
+                <a href="{{ item.href }}" class="SiteNav__ListItemInner">
+                    {% if item['hasBadgeMarkup'] is defined and item['hasBadgeMarkup'] %}
+                        <span class="SiteNav__ListItemBadge SiteNav__ListItemBadge--IsHidden{% if item['badgeClass'] is defined %} {{ item.badgeClass }}{% endif %}"></span>
+                    {% endif %}
+                    <span class="SiteNav__ListItemIcon">
+                        {% include item.svgIconTemplate %}
+                    </span>
+                    <span class="SiteNav__ListItemContent SiteNav__ListItemContent--IsBesideLogo">
+                        {{ item.content|smartypants }}
+                    </span>
+                </a>
+            </li>
+        {% endfor %}
+        <li class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased JS-SiteNav__Expander">
+            <span class="SiteNav__ListItemInner">
+                <span class="SiteNav__ListItemIcon SiteNav__ListItemIcon--IsMoreExpander">
+                    {% include 'Svg/PlusIcon.svg' %}
+                </span>
+                <span class="SiteNav__ListItemContent SiteNav__ListItemContent--IsHidden">
+                    More Menu Items
+                </span>
+            </span>
+        </li>
+        {% for item in items %}
+            <li class="SiteNav__ListItem SiteNav__ListItem--IsNotPersistent">
+                <a href="{{ item.href }}" class="SiteNav__ListItemInner">
+                    <span class="SiteNav__ListItemContent">
+                        {{ item.content|smartypants }}
+                    </span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

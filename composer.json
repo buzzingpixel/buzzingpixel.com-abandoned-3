@@ -82,6 +82,7 @@
         "httpActionConfigFilePath": "config/httpActions.php",
         "httpRouteConfigFilePath": "config/httpRoutes.php",
         "scheduleConfigFilePath": "config/schedule.php",
+        "twigGlobalsFilePath": "config/twigGlobals.php",
         "twigTemplatesDirectories": {
             "": "assetsSource/templates"
         }
