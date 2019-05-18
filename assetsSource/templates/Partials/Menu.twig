@@ -3,8 +3,11 @@
 {% set items = nav['items'] ?? [] %}
 
 <nav
-    class="SiteNav JS-SiteNav"
-    data-active-class="SiteNav--IsActive"
+    class="SiteNav"
+    v-bind:class="{ 'SiteNav--IsActive': isActive}"
+    ref="SiteNav"
+    @mouseenter="mouseEnter"
+    @mouseleave="mouseLeave"
 >
     <ul class="SiteNav__List">
         <li class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased">
@@ -32,7 +35,11 @@
                 </a>
             </li>
         {% endfor %}
-        <li class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased JS-SiteNav__Expander">
+        <li
+            class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased"
+            ref="SiteNav__Expander"
+            @click="expanderClick"
+        >
             <span class="SiteNav__ListItemInner">
                 <span class="SiteNav__ListItemIcon SiteNav__ListItemIcon--IsMoreExpander">
                     {% include 'Svg/PlusIcon.svg' %}
