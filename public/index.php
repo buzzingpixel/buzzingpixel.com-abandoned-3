@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Error\ErrorPageMiddleware;
 use corbomite\di\Di;
 use corbomite\http\Kernel;
 
@@ -12,5 +13,4 @@ if (getenv('DEV_MODE') === 'true') {
 }
 
 /** @noinspection PhpUnhandledExceptionInspection */
-// TODO: Add error handler argument for 404 and 500 error pages in production
-Di::diContainer()->get(Kernel::class)();
+Di::diContainer()->get(Kernel::class)(ErrorPageMiddleware::class);

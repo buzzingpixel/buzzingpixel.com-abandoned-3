@@ -8,13 +8,13 @@ use App\Common\Http\StandardPageResponder;
 use BuzzingPixel\Scribble\Services\GetContentFromFile\Content;
 use BuzzingPixel\Scribble\Services\GetContentFromPath\ContentCollection;
 use corbomite\di\Di;
+use corbomite\http\exceptions\Http500Exception;
 use corbomite\twig\TwigEnvironment;
 use LogicException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Throwable;
-use function is_array;
 
 class StandardPageResponderTest extends TestCase
 {
@@ -75,27 +75,11 @@ class StandardPageResponderTest extends TestCase
     /**
      * @throws Throwable
      */
-    public function testCreateResponseBasedOnInputReturns404ResponseWhenNoContent() : void
+    public function testCreateResponseBasedOnInputThrowsExceptionWhenNoContent() : void
     {
-        $response = $this->standardPageResponder->createResponseBasedOnInput();
+        self::expectException(Http500Exception::class);
 
-        self::assertEquals(
-            'text/html',
-            $response->getHeaderLine('Content-Type')
-        );
-
-        $response->getBody()->rewind();
-
-        self::assertEquals(
-            'renderAndMinifyReturn',
-            $response->getBody()->getContents()
-        );
-
-        self::assertEquals('404.twig', $this->template);
-
-        self::assertTrue(is_array($this->vars));
-
-        self::assertCount(0, $this->vars);
+        $this->standardPageResponder->createResponseBasedOnInput();
     }
 
     /**

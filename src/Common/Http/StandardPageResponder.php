@@ -6,6 +6,7 @@ namespace App\Common\Http;
 
 use BuzzingPixel\Scribble\Services\GetContentFromPath\ContentCollection;
 use BuzzingPixel\Scribble\Services\GetContentFromPath\GetContentFromPathDelegate;
+use corbomite\http\exceptions\Http500Exception;
 use corbomite\twig\TwigEnvironment;
 use LogicException;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -51,14 +52,7 @@ class StandardPageResponder implements GetContentFromPathDelegate
     public function createResponseBasedOnInput() : ResponseInterface
     {
         if (! $this->contentCollection) {
-            $response = $this->responseFactory->createResponse(404)
-                ->withHeader('Content-Type', 'text/html');
-
-            $response->getBody()->write(
-                $this->twig->renderAndMinify('404.twig')
-            );
-
-            return $response;
+            throw new Http500Exception();
         }
 
         $index = $this->contentCollection->filterMetaEqualTo(
