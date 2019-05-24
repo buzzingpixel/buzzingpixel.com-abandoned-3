@@ -24,9 +24,11 @@
             <div class="CallOut__ItemBodyCta">
                 <div class="CallOut__ItemBodyCtaInner">
                     {% for link in cta %}
-                        <a href="{{ link.href }}" class="CallOut__ItemBodyCtaLink">
-                            {{ link.content|smartypants }}
-                        </a>
+                        {% if loop.index < 3 %}
+                            <a href="{{ link.href }}" class="CallOut__ItemBodyCtaLink{% if cta|length > 1 %} CallOut__ItemBodyCtaLink--HasTwoCtas{% endif %}">
+                                {{ link.content|smartypants }}
+                            </a>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

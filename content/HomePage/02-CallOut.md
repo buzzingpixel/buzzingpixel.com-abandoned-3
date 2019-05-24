@@ -24,7 +24,7 @@
     },
     "left": {
         "title": "Treasury",
-        "bodyContent": "Ansel puts the power of image manipulation in your hands. You can define constraints, widths, heights, aspect ratios, and more for each field so that anyone can edit images in entries with confidence all while using the manipulation tools to bring out the best in your sites images!",
+        "bodyContent": "Ansel puts the power in your hands. Image constraints, width, height, aspect ratio, and more so anyone can edit images in entries with confidence; all while using the manipulation tools to bring present your images best!",
         "bullets": [
             "Store files on S3 or any (S)FTP location",
             "Simple, easy to use field type",
@@ -37,9 +37,9 @@
     },
     "right": {
         "title": "Construct",
-        "bodyContent": "Construct makes it easy for developers to create nested menu structures and at the same time, easy for non-technical content managers to manage pages and menus in the CMS!",
+        "bodyContent": "Construct makes it easy for developers to create nested menu structures while at the same time making it easy for non-technical content managers to manage pages and menus in the CMS!",
         "bullets": [
-            "Unlimited number of \"trees\" for menus and pages",
+            "Unlimited number of trees for menus and pages",
             "Easy to use template tags",
             "Easy custom configuration"
         ],
