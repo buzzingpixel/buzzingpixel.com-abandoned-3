@@ -4,7 +4,8 @@
     "subHeading": "BuzzingPixel is me, TJ Draper. This is where you'll find my work, add-ons, and more.",
     "image": {
         "1x": "/content-images/tj-headshot-wide-900w.jpg",
-        "2x": "/content-images/tj-headshot-wide-1800w.jpg"
+        "2x": "/content-images/tj-headshot-wide-1800w.jpg",
+        "alt": "TJ Headshot"
     }
 }
 

@@ -1,0 +1,45 @@
+{# @var string headline #}
+{% set headline = headline ?? '' %}
+{# @var string subHeading #}
+{% set subHeading = subHeading ?? '' %}
+{# @var string image1x #}
+{% set image1x = image['1x'] ?? '' %}
+{# @var string image2x #}
+{% set image2x = image['2x'] ?? '' %}
+{# @var string imageAlt #}
+{% set imageAlt = image['alt'] ?? '' %}
+{# @var string content #}
+{% set content = content ?? '' %}
+
+{% if not image1x %}
+    {% set image1x = image ?? '' %}
+{% endif %}
+
+<section class="InformationalImage">
+    <div class="InformationalImage__Inner">
+        {% if headline %}
+            <h2 class="heading heading--level-2 InformationalImage__Headline">
+                {{ headline|smartypants }}
+            </h2>
+        {% endif %}
+        {% if subHeading %}
+            <h3 class="heading heading--level-3 InformationalImage__SubHeading">
+                {{ subHeading|smartypants }}
+            </h3>
+        {% endif %}
+        {% if content %}
+            <div class="InformationalImage__Content">
+                {{ content|smartypants }}
+            </div>
+        {% endif %}
+        {% if image1x %}
+            <div class="InformationalImage__Image">
+                <img
+                    src="{{ image1x }}"
+                    srcset="{{ image1x }} 1x, {{ image2x }} 2x"
+                    alt="{{ imageAlt }}"
+                >
+            </div>
+        {% endif %}
+    </div>
+</section>
