@@ -6,8 +6,9 @@ namespace App\Http\News;
 
 use BuzzingPixel\Scribble\ScribbleApiContract;
 use corbomite\http\exceptions\Http404Exception;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use function dd;
+use Throwable;
 use function max;
 
 class GetNewsAction
@@ -26,9 +27,9 @@ class GetNewsAction
     }
 
     /**
-     * @throws Http404Exception
+     * @throws Throwable
      */
-    public function __invoke(ServerRequestInterface $request) : void
+    public function __invoke(ServerRequestInterface $request) : ResponseInterface
     {
         $page = $request->getAttribute('page');
 
@@ -40,6 +41,6 @@ class GetNewsAction
 
         $this->scribbleApi->getContentPathCollection('News', $this->responder);
 
-        dd($page);
+        return $this->responder->createResponse(10, $page);
     }
 }
