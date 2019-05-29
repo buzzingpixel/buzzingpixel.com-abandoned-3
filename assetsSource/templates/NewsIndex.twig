@@ -1,3 +1,31 @@
-News Index
+{# @var \BuzzingPixel\Scribble\Services\GetContentPathCollection\ContentPathCollection collection #}
 
-{{ dump(collection) }}
+{% set hasHeadingBackground = false %}
+
+{% set metaTitle = 'News' %}
+
+{% extends '_Layout.twig' %}
+
+{% block content %}
+    <div class="StandardPage">
+        <div class="StandardPage__Inner">
+            <div class="StandardPage__TitleArea">
+                {% include 'Components/TitleArea.twig' with {
+                    title: 'News',
+                    titleSmall: 'for BuzzingPixel',
+                    titleActionButtons: [
+                        {
+                            href: '#TODO-Tmp',
+                            content: 'Test Button',
+                            style: 'light',
+                        },
+                        {
+                            href: '#TODO-Tmp',
+                            content: 'Test Button',
+                        },
+                    ]
+                } %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

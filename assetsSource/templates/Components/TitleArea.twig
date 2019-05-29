@@ -1,0 +1,46 @@
+{# @var string title #}
+{% set title = (block('title') ?? title) %}
+{# @var string titleSmall #}
+{% set titleSmall = (block('titleSmall') ?? titleSmall ?? '') %}
+{# @var array titleActionButtons #}
+{% set titleActionButtons = titleActionButtons ?? [] %}
+
+{#
+{% set titleActionButtons = [
+    {
+        href: '#',
+        content: 'Test Button',
+        style: 'light',
+    },
+    {
+        href: '#',
+        content: 'Test Button',
+    },
+] %}
+#}
+
+<div class="TitleArea">
+    <div class="TitleArea__Inner">
+        <h1 class="heading heading--level-1 TitleArea__Title">
+            {{ title|smartypants }}
+            {% if titleSmall %}
+                <small class="TitleArea__Small">
+                    {{ titleSmall|smartypants }}
+                </small>
+            {% endif %}
+        </h1>
+        {% if titleActionButtons|length %}
+            <div class="TitleArea__ActionButtons">
+                {% for button in titleActionButtons %}
+                    {% set lightButton = button['style'] is defined and button['style'] == 'light' %}
+                    <a
+                        href="{{ button.href }}"
+                        class="button TitleArea__ActionButton{% if lightButton %} button--light TitleArea__ActionButton--IsLight{% endif %}"
+                    >
+                        {{ button.content|smartypants }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
