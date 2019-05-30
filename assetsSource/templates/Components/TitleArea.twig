@@ -20,8 +20,8 @@
 #}
 
 <div class="TitleArea">
-    <div class="TitleArea__Inner">
-        <h1 class="heading heading--level-1 TitleArea__Title">
+    <div class="TitleArea__Inner{% if titleActionButtons|length %} TitleArea__Inner--HasActionButtons{% endif %}">
+        <h1 class="heading heading--level-1 TitleArea__Title{% if titleActionButtons|length %} TitleArea__Title--HasActionButtons{% endif %}">
             {{ title|smartypants }}
             {% if titleSmall %}
                 <small class="TitleArea__Small">
@@ -35,7 +35,7 @@
                     {% set lightButton = button['style'] is defined and button['style'] == 'light' %}
                     <a
                         href="{{ button.href }}"
-                        class="button TitleArea__ActionButton{% if lightButton %} button--light TitleArea__ActionButton--IsLight{% endif %}"
+                        class="button TitleArea__ActionButton{% if lightButton %} button--light{% else %} button--colored{% endif %}"
                     >
                         {{ button.content|smartypants }}
                     </a>
