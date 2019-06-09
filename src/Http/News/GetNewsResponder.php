@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\News;
 
+use App\Common\Pagination\Pagination;
 use BuzzingPixel\Scribble\Services\GetContentPathCollection\ContentPathCollection;
 use BuzzingPixel\Scribble\Services\GetContentPathCollection\GetContentPathCollectionDelegate;
 use corbomite\http\exceptions\Http404Exception;
@@ -67,9 +68,16 @@ class GetNewsResponder implements GetContentPathCollectionDelegate
         $response = $this->responseFactory->createResponse(200)
             ->withHeader('Content-Type', 'text/html');
 
-        // TODO: Create pagination object and send here
+        $pagination = (new Pagination())->withBase('news')
+            ->withCurrentPage($page)
+            ->withPerPage($limit)
+            ->withTotalResults($this->collection->count());
+
         $response->getBody()->write(
-            $this->twig->renderAndMinify('NewsIndex.twig', ['collection' => $collection])
+            $this->twig->renderAndMinify('NewsIndex.twig', [
+                'collection' => $collection,
+                'pagination' => $pagination,
+            ])
         );
 
         return $response;
