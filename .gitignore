@@ -5,6 +5,7 @@
 # ...custom project excludes
 /public/assets
 auth.json
+projectOverrides.json
 
 
 
