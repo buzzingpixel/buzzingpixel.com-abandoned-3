@@ -1,0 +1,27 @@
+{
+    // General
+    "editor.renderIndentGuides": true,
+    "editor.rulers": [80, 120],
+    "files.insertFinalNewline": true,
+
+    // PHPMD
+    "phpmd.rules": "${workspaceFolder}/phpmd.xml",
+
+    // Tasks on save
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": "src\\/.*?\\.php$|tests\\/.*?\\.php$",
+                "cmd": "${workspaceRoot}/vendor/bin/php-cs-fixer fix ${file}"
+            },
+            {
+                "match": "src\\/.*?\\.php$|tests\\/.*?\\.php$",
+                "cmd": "${workspaceRoot}/vendor/bin/phpcbf ${file}"
+            },
+            {
+                "match": "assetsSource\\/js\\/.*?\\.js$",
+                "cmd": "${workspaceRoot}/platform/node_modules/.bin/eslint --fix ${file}"
+            }
+        ],
+    },
+}
