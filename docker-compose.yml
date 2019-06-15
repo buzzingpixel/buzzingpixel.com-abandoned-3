@@ -34,7 +34,7 @@ services:
     networks:
       common-buzzingpixel-network:
         aliases:
-          - buzzingpixel.test
+          - ${SERVER_NAME_ALIAS}
   php:
     env_file: .env
     image: buzzingpixel/php7.2:1.0.6
