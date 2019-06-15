@@ -21,7 +21,7 @@ services:
     environment:
       HOSTNAME: nginx-buzzingpixel
     ports:
-      - 26087:80
+      - ${HOST_NGINX_PORT}:${DOCKER_NGINX_PORT}
     volumes:
       - ./serverConfig/nginx/${NGINX_CONFIG}.conf:/etc/nginx/conf.d/${NGINX_CONFIG}.conf:delegated
       - .:/app-www:delegated
