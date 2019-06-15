@@ -48,7 +48,6 @@ fi
 ## If command is up or run, we need to run the docker containers and install composer and yarn dependencies
 if [[ "${cmd}" = "up" ]] || [[ "${cmd}" = "run" ]]; then
     valid=true;
-    touch .env.override
     docker kill node-buzzingpixel
     docker-compose -f docker-compose.yml -p buzzingpixel up -d
     docker exec -it --user root --workdir /app php-buzzingpixel bash -c "cd /app && composer install"

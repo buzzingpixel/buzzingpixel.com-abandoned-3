@@ -97,7 +97,6 @@ exit /b 0
 
 :: Up function
 :up
-    type nul >> .env.override
     docker-compose -f docker-compose.yml -p buzzingpixel up -d
     docker exec -it --user root --workdir /app php-buzzingpixel bash -c "cd /app && composer install"
     docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn"
