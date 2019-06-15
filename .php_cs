@@ -5,6 +5,7 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__);
 
 return PhpCsFixer\Config::create()
+    ->setUsingCache(false)
     ->setRules(
         [
             'mb_str_functions' => true,

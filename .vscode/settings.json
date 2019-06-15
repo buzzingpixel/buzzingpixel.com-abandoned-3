@@ -12,11 +12,11 @@
         "commands": [
             {
                 "match": "src\\/.*?\\.php$|tests\\/.*?\\.php$",
-                "cmd": "${workspaceRoot}/vendor/bin/php-cs-fixer fix ${file}"
+                "cmd": "${workspaceRoot}/vendor/bin/php-cs-fixer fix ${file} --using-cache=no --config=${workspaceRoot}/.php_cs"
             },
             {
                 "match": "src\\/.*?\\.php$|tests\\/.*?\\.php$",
-                "cmd": "${workspaceRoot}/vendor/bin/phpcbf ${file}"
+                "cmd": "${workspaceRoot}/vendor/bin/phpcbf ${file} --standard=${workspaceRoot}/phpcs.xml"
             },
             {
                 "match": "assetsSource\\/js\\/.*?\\.js$",
