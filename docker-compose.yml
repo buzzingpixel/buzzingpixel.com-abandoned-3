@@ -2,6 +2,7 @@ version: '3'
 
 services:
   utility:
+    env_file: .env
     image: buzzingpixel/utility:1.1.0
     container_name: utility-buzzingpixel
     environment:
@@ -16,6 +17,7 @@ services:
     networks:
       common-buzzingpixel-network:
   web:
+    env_file: .env
     image: buzzingpixel/nginx:1.0.2
     container_name: nginx-buzzingpixel
     environment:
@@ -34,6 +36,7 @@ services:
         aliases:
           - buzzingpixel.test
   php:
+    env_file: .env
     image: buzzingpixel/php7.2:1.0.6
     container_name: php-buzzingpixel
     environment:
@@ -51,6 +54,7 @@ services:
     networks:
       common-buzzingpixel-network:
   db:
+    env_file: .env
     image: buzzingpixel/mariadb:2.0.1
     container_name: db-buzzingpixel
     restart: always
@@ -64,6 +68,7 @@ services:
     networks:
       common-buzzingpixel-network:
   node:
+    env_file: .env
     image: node:11.12.0
     container_name: node-buzzingpixel
     ports:
