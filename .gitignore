@@ -16,7 +16,7 @@ auth.json
 
 .php_cs.cache
 .phpunit.result.cache
-/.env.override
+/.env
 /*-workspace
 /node_modules
 /*.sublime-*
