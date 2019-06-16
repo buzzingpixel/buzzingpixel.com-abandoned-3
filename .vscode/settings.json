@@ -11,15 +11,15 @@
     "emeraldwalk.runonsave": {
         "commands": [
             {
-                "match": "src\\/.*?\\.php$|tests\\/.*?\\.php$",
+                "match": "src\\/.*?\\.php$|tests\\/.*?\\.php$|src\\\\.*?\\.php$|tests\\\\.*?\\.php$",
                 "cmd": "${workspaceRoot}/vendor/bin/php-cs-fixer fix ${file} --using-cache=no --config=${workspaceRoot}/.php_cs"
             },
             {
-                "match": "src\\/.*?\\.php$|tests\\/.*?\\.php$",
+                "match": "src\\/.*?\\.php$|tests\\/.*?\\.php$|src\\\\.*?\\.php$|tests\\\\.*?\\.php$",
                 "cmd": "${workspaceRoot}/vendor/bin/phpcbf ${file} --standard=${workspaceRoot}/phpcs.xml"
             },
             {
-                "match": "assetsSource\\/js\\/.*?\\.js$",
+                "match": "assetsSource\\/js\\/.*?\\.js$|assetsSource\\\\js\\\\.*?\\.js$",
                 "cmd": "${workspaceRoot}/platform/node_modules/.bin/eslint --fix ${file}"
             }
         ],
