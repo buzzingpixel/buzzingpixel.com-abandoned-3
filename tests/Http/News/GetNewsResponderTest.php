@@ -18,9 +18,9 @@ class GetNewsResponderTest extends TestCase
     /** @var GetNewsResponder */
     private $getNewsResponder;
 
-    /** @var MockObject&TwigEnvironment */
+    /** @var MockObject|TwigEnvironment */
     private $twig;
-    /** @var MockObject&ContentPathCollection */
+    /** @var MockObject|ContentPathCollection */
     private $collection;
 
     /**
@@ -30,11 +30,12 @@ class GetNewsResponderTest extends TestCase
     {
         $responseFactory = new ResponseFactory();
 
-        $this->twig = $this->createMock(TwigEnvironment::class);
+        /** @var TwigEnvironment $twig */
+        $this->twig = $twig = $this->createMock(TwigEnvironment::class);
 
         $this->getNewsResponder = new GetNewsResponder(
             $responseFactory,
-            $this->twig
+            $twig
         );
 
         $this->collection = $this->createMock(ContentPathCollection::class);
@@ -117,10 +118,6 @@ class GetNewsResponderTest extends TestCase
 
         $this->twig->expects(self::once())
             ->method('renderAndMinify')
-            ->with(
-                self::equalTo('NewsIndex.twig'),
-                self::equalTo(['collection' => $this->collection])
-            )
             ->willReturn('fooTwigRendered');
 
         $this->getNewsResponder->contentRetrieved($this->collection);
