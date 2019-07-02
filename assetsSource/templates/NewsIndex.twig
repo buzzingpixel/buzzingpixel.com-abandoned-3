@@ -17,6 +17,40 @@
                 } %}
             </div>
 
+            <div class="StandardPage__Content">
+                <div class="StandardPage__ContentInner">
+                    {% for item in collection %}
+                        {% set itemContent = item.first() %}
+                        
+                        {% set meta = itemContent.meta() %}
+
+                        {% set permalink %}
+                            <a href="{{ pagination.base() }}/{{ meta.slug }}">
+                                Permalink
+                            </a>
+                        {% endset %}
+
+                        {# TODO: trim characters and strip tags and such #}
+                        {% include "Layers/Box.twig" with {
+                            sidebar: [
+                                {
+                                    key: 'Title',
+                                    value: meta.title,
+                                },
+                                {
+                                    key: 'Date',
+                                    value: meta.postDate|date('F n, Y'),
+                                },
+                                {
+                                    value: permalink,
+                                },
+                            ],
+                            content: itemContent.html(),
+                        } only %}
+                    {% endfor %}
+                </div>
+            </div>
+
             {# TODO: remove these when ready #}
             <br><br><br><br><br><br><br><br>
         </div>
