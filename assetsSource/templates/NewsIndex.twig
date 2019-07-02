@@ -45,7 +45,7 @@
                                     value: permalink,
                                 },
                             ],
-                            content: itemContent.html(),
+                            content: itemContent.html()|truncate(500),
                         } only %}
                     {% endfor %}
                 </div>
