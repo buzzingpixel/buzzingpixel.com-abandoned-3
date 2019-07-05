@@ -10,53 +10,65 @@
 {% block content %}
     <div class="StandardPage">
         <div class="StandardPage__Inner">
-            <div class="StandardPage__TitleArea">
-                {% include 'Components/TitleArea.twig' with {
-                    title: 'News',
-                    titleSmall: 'from BuzzingPixel',
-                } %}
-            </div>
 
-            <div class="StandardPage__Content StandardPage__Content--Max1600">
-                <div class="StandardPage__ContentInner">
-                    {% for item in collection %}
-                        <div class="BoxContainer">
-                            {% set itemContent = item.first() %}
-
-                            {% set meta = itemContent.meta() %}
-
-                            {% set permalink %}
-                                <a href="{{ pagination.base() }}/{{ meta.slug }}">
-                                    Permalink
-                                </a>
-                            {% endset %}
-
-                            {% set readLink %}
-                                <a href="{{ pagination.base() }}/{{ meta.slug }}">
-                                    Read Article &raquo;
-                                </a>
-                            {% endset %}
-
-                            {% include "Layers/Box.twig" with {
-                                sidebar: [
-                                    {
-                                        key: 'title',
-                                    value: '<strong>' ~ meta.title ~ '</strong>',
-                                    },
-                                    {
-                                        key: 'date',
-                                        value: meta.postDate|date('F n, Y'),
-                                    },
-                                    {
-                                        value: permalink,
-                                    },
-                                ],
-                                content: itemContent.html()|striptags|truncate(500) ~ ' ' ~ readLink,
-                            } only %}
-                        </div>
-                    {% endfor %}
+            {# StandardPage__TitleArea #}
+                <div class="StandardPage__TitleArea">
+                    {% include 'Components/TitleArea.twig' with {
+                        title: 'News',
+                        titleSmall: 'from BuzzingPixel',
+                    } %}
                 </div>
-            </div>
+            {# /StandardPage__TitleArea #}
+
+            {# StandardPage__Content #}
+                <div class="StandardPage__Content StandardPage__Content--Max1600">
+                    <div class="StandardPage__ContentInner">
+
+                        {% for item in collection %}
+                            <div class="BoxContainer">
+                                {% set itemContent = item.first() %}
+
+                                {% set meta = itemContent.meta() %}
+
+                                {% set permalink %}
+                                    <a href="{{ pagination.base() }}/{{ meta.slug }}">
+                                        Permalink
+                                    </a>
+                                {% endset %}
+
+                                {% set readLink %}
+                                    <a href="{{ pagination.base() }}/{{ meta.slug }}">
+                                        Read Article &raquo;
+                                    </a>
+                                {% endset %}
+
+                                {% include "Layers/Box.twig" with {
+                                    sidebar: [
+                                        {
+                                            key: 'title',
+                                        value: '<strong>' ~ meta.title ~ '</strong>',
+                                        },
+                                        {
+                                            key: 'date',
+                                            value: meta.postDate|date('F n, Y'),
+                                        },
+                                        {
+                                            value: permalink,
+                                        },
+                                    ],
+                                    content: itemContent.html()|striptags|truncate(500) ~ ' ' ~ readLink,
+                                } only %}
+                            </div>
+                        {% endfor %}
+
+                        {% include 'Components/Pagination.twig' with {
+                            pagination: pagination
+                        } only %}
+
+                    </div>
+                </div>
+            {# /StandardPage__Content #}
+
         </div>
     </div>
 {% endblock %}
