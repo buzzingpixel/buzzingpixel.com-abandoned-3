@@ -83,6 +83,9 @@
         "httpRouteConfigFilePath": "config/httpRoutes.php",
         "scheduleConfigFilePath": "config/schedule.php",
         "twigGlobalsFilePath": "config/twigGlobals.php",
+        "twigExtensions":[
+            "\\App\\Http\\TwigExtensions\\EnsureType"
+        ],
         "twigTemplatesDirectories": {
             "": "assetsSource/templates"
         }
