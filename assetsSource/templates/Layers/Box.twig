@@ -2,7 +2,7 @@
 {% set content = (block('content') ?? content ?? '') %}
 
 <div class="Box{% if sidebar or sidebar is iterable %} Box--HasSidebar{% endif %}">
-    <div class="Box__Inner">
+    <div class="Box__Inner{% if sidebar or sidebar is iterable %} Box__Inner--HasSidebar{% endif %}">
         {% if sidebar is iterable %}
             {% include "Layers/BoxSidebar.twig" with {
                 sidebar: sidebar,

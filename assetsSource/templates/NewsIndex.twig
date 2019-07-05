@@ -17,42 +17,46 @@
                 } %}
             </div>
 
-            <div class="StandardPage__Content">
+            <div class="StandardPage__Content StandardPage__Content--Max1600">
                 <div class="StandardPage__ContentInner">
                     {% for item in collection %}
-                        {% set itemContent = item.first() %}
-                        
-                        {% set meta = itemContent.meta() %}
+                        <div class="BoxContainer">
+                            {% set itemContent = item.first() %}
 
-                        {% set permalink %}
-                            <a href="{{ pagination.base() }}/{{ meta.slug }}">
-                                Permalink
-                            </a>
-                        {% endset %}
+                            {% set meta = itemContent.meta() %}
 
-                        {# TODO: trim characters and strip tags and such #}
-                        {% include "Layers/Box.twig" with {
-                            sidebar: [
-                                {
-                                    key: 'Title',
-                                    value: meta.title,
-                                },
-                                {
-                                    key: 'Date',
-                                    value: meta.postDate|date('F n, Y'),
-                                },
-                                {
-                                    value: permalink,
-                                },
-                            ],
-                            content: itemContent.html()|truncate(500),
-                        } only %}
+                            {% set permalink %}
+                                <a href="{{ pagination.base() }}/{{ meta.slug }}">
+                                    Permalink
+                                </a>
+                            {% endset %}
+
+                            {% set readLink %}
+                                <a href="{{ pagination.base() }}/{{ meta.slug }}">
+                                    Read Article &raquo;
+                                </a>
+                            {% endset %}
+
+                            {% include "Layers/Box.twig" with {
+                                sidebar: [
+                                    {
+                                        key: 'title',
+                                    value: '<strong>' ~ meta.title ~ '</strong>',
+                                    },
+                                    {
+                                        key: 'date',
+                                        value: meta.postDate|date('F n, Y'),
+                                    },
+                                    {
+                                        value: permalink,
+                                    },
+                                ],
+                                content: itemContent.html()|striptags|truncate(500) ~ ' ' ~ readLink,
+                            } only %}
+                        </div>
                     {% endfor %}
                 </div>
             </div>
-
-            {# TODO: remove these when ready #}
-            <br><br><br><br><br><br><br><br>
         </div>
     </div>
 {% endblock %}
