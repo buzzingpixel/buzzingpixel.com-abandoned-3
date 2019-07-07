@@ -57,9 +57,9 @@ class GetNewsResponder implements GetContentPathCollectionDelegate
             throw new Http404Exception();
         }
 
-        $page--;
+        $pageZeroIndex = $page - 1;
 
-        $collection = $this->collection->subSet($limit, $page * $limit);
+        $collection = $this->collection->subSet($limit, $pageZeroIndex * $limit);
 
         if (! $collection) {
             throw new Http404Exception();
