@@ -21,10 +21,27 @@
             {# /StandardPage__TitleArea #}
 
             {# TODO: Breadcrumbs #}
+            {% if pagination.currentPage() > 1 %}
+                {% include 'Components/BreadCrumbs.twig' with {
+                    breadcrumbs: [
+                        {
+                            href: '/news',
+                            content: 'News',
+                        },
+                        {
+                            content: 'Page ' ~ pagination.currentPage(),
+                        },
+                    ],
+                } %}
+            {% endif %}
 
             {# StandardPage__Content #}
                 <div class="StandardPage__Content StandardPage__Content--Max1600">
                     <div class="StandardPage__ContentInner">
+
+                        {% include 'Components/Pagination.twig' with {
+                            pagination: pagination
+                        } only %}
 
                         {% for item in collection %}
                             <div class="BoxContainer">
