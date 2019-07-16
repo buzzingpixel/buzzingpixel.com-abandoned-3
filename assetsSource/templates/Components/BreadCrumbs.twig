@@ -1,4 +1,5 @@
 {# @var array breadcrumbs #}
+{% set includeHome = includeHome ?? true %}
 {% set breadcrumbs = breadcrumbs ?? [] %}
 
 {# {% set breadcrumbs = breadcrumbs ?? [
@@ -17,6 +18,16 @@
 
 {% if breadcrumbs|length %}
     <ul class="BreadCrumbs">
+        {% if includeHome %}
+            <li class="BreadCrumbs__Item">
+                <a
+                    href="/"
+                    class="BreadCrumbs__ItemLink"
+                >
+                    Home
+                </a>
+            </li>
+        {% endif %}
         {% for breadcrumb in breadcrumbs %}
             <li class="BreadCrumbs__Item">
                 {% if not loop.last %}

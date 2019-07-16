@@ -1,0 +1,47 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content entry #}
+
+{% set hasHeadingBackground = false %}
+
+{% set metaTitle = entry.metaItem('title') ~ ' | News' %}
+
+{% extends '_Layout.twig' %}
+
+{% block content %}
+    <div class="StandardPage">
+        <div class="StandardPage__Inner">
+
+            {# StandardPage__TitleArea #}
+                <div class="StandardPage__TitleArea">
+                    {% include 'Components/TitleArea.twig' with {
+                        title: entry.metaItem('title'),
+                    } %}
+                </div>
+            {# /StandardPage__TitleArea #}
+
+            {% include 'Components/BreadCrumbs.twig' with {
+                breadcrumbs: [
+                    {
+                        href: '/news',
+                        content: 'News',
+                    },
+                    {
+                        content: 'Viewing Entry',
+                    },
+                ],
+            } %}
+
+            {# StandardPage__Content #}
+                <div class="StandardPage__Content StandardPage__Content--Max1600">
+                    <div class="StandardPage__ContentInner">
+                        <div class="BoxContainer">
+                            {% include "Layers/Box.twig" with {
+                                content: entry.html(),
+                            } only %}
+                        </div>
+                    </div>
+                </div>
+            {# /StandardPage__Content #}
+
+        </div>
+    </div>
+{% endblock %}
