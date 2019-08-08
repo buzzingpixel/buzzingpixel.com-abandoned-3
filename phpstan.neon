@@ -3,3 +3,4 @@ parameters:
 
 includes:
     - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
