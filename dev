@@ -39,6 +39,7 @@ if [[ -z "${cmd}" ]]; then
     printf "  ./dev test\n";
     printf "  ./dev phpstan [args]\n";
     printf "  ./dev phpunit [args]\n"
+    printf "  ./dev psalm [args]\n";
     printf "  ./dev yarn [args]\n"
     printf "  ./dev cli [args]\n"
     printf "  ./dev composer [args]\n"
@@ -73,15 +74,30 @@ if [[ "${cmd}" = "down" ]]; then
     docker-compose -f docker-compose.yml -p buzzingpixel down
 fi
 
+if [[ "${cmd}" = "psalm" ]] || [[ "${cmd}" = "test" ]]; then
+    valid=true;
+    if [[ "${cmd}" = "test" ]]; then
+        printf "${Yellow}Running psalm...${Reset}\n";
+    fi
+    chmod +x vendor/bin/psalm && vendor/bin/psalm ${allArgsExceptFirst};
+    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/psalm && /app/vendor/bin/psalm ${allArgsExceptFirst}"
+fi
+
 ## Run phpstan if requested
 if [[ "${cmd}" = "phpstan" ]] || [[ "${cmd}" = "test" ]]; then
     valid=true;
+    if [[ "${cmd}" = "test" ]]; then
+        printf "${Yellow}Running phpstan...${Reset}\n";
+    fi
     docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpstan && /app/vendor/bin/phpstan analyse src ${allArgsExceptFirst}"
 fi
 
 ## Run phpunit if requested
 if [[ "${cmd}" = "phpunit" ]] || [[ "${cmd}" = "test" ]]; then
     valid=true;
+    if [[ "${cmd}" = "test" ]]; then
+        printf "${Yellow}Running phpunit...${Reset}\n";
+    fi
     docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpunit && /app/vendor/bin/phpunit --configuration /app/phpunit.xml ${allArgsExceptFirst}"
 fi
 
