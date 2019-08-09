@@ -1,32 +1,34 @@
 {# @var \BuzzingPixel\Scribble\Services\GetContentFromPath\ContentCollection contentCollection #}
 {# @var bool hasHeadingBackground #}
 
-{% for content in contentCollection.all() %}
-    {% set layerType = content.getMetaItem('layerType') %}
+{% if contentCollection %}
+    {% for content in contentCollection.all() %}
+        {% set layerType = content.getMetaItem('layerType') %}
 
-    {% set payload = {
-        content: content,
-        hasHeadingBackground: hasHeadingBackground,
-    } %}
+        {% set payload = {
+            content: content,
+            hasHeadingBackground: hasHeadingBackground,
+        } %}
 
-    {% switch layerType %}
-        {% case 'ShowCase' %}
-            {% include 'PageBuilder/ShowCase.twig' with payload only %}
-        {% case 'CallOut' %}
-            {% include 'PageBuilder/CallOut.twig' with payload only %}
-        {% case 'InformationalImage' %}
-            {% include 'PageBuilder/InformationalImage.twig' with payload only %}
-        {% default %}
-            {% if getenv('DEV_MODE') == 'true' %}
-                <div style="text-align: center;">
-                    <br><br><br>
-<pre>
-=====================================<br>
-TODO: Implement layer type: {{ layerType }}<br>
-=====================================<br>
-</pre>
-                    <br><br><br>
-                </div>
-            {% endif %}
-    {% endswitch %}
-{% endfor %}
+        {% switch layerType %}
+            {% case 'ShowCase' %}
+                {% include 'PageBuilder/ShowCase.twig' with payload only %}
+            {% case 'CallOut' %}
+                {% include 'PageBuilder/CallOut.twig' with payload only %}
+            {% case 'InformationalImage' %}
+                {% include 'PageBuilder/InformationalImage.twig' with payload only %}
+            {% default %}
+                {% if getenv('DEV_MODE') == 'true' %}
+                    <div style="text-align: center;">
+                        <br><br><br>
+    <pre>
+    =====================================<br>
+    TODO: Implement layer type: {{ layerType }}<br>
+    =====================================<br>
+    </pre>
+                        <br><br><br>
+                    </div>
+                {% endif %}
+        {% endswitch %}
+    {% endfor %}
+{% endif %}
