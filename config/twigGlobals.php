@@ -23,10 +23,10 @@ return [
             ],
         ],
         'items' => [
-            [
-                'href' => '/news',
-                'content' => 'News',
-            ],
+            // [
+            //     'href' => '/news',
+            //     'content' => 'News',
+            // ],
             [
                 'href' => '/software/ansel-craft',
                 'content' => 'Ansel for Craft',
@@ -34,6 +34,10 @@ return [
             [
                 'href' => '/software/ansel-ee',
                 'content' => 'Ansel for EE',
+            ],
+            [
+                'href' => '/software/executive-ee',
+                'content' => 'Executive for EE',
             ],
             [
                 'href' => '/software/treasury',
