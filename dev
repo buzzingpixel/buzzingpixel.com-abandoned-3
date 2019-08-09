@@ -79,7 +79,6 @@ if [[ "${cmd}" = "psalm" ]] || [[ "${cmd}" = "test" ]]; then
     if [[ "${cmd}" = "test" ]]; then
         printf "${Yellow}Running psalm...${Reset}\n";
     fi
-    chmod +x vendor/bin/psalm && vendor/bin/psalm ${allArgsExceptFirst};
     docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/psalm && /app/vendor/bin/psalm ${allArgsExceptFirst}"
 fi
 

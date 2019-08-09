@@ -31,7 +31,7 @@ class GetNewsAction
      */
     public function __invoke(ServerRequestInterface $request) : ResponseInterface
     {
-        $page = $request->getAttribute('page');
+        $page = (string) $request->getAttribute('page');
 
         if ($page === '0' || $page === '1') {
             throw new Http404Exception();

@@ -20,7 +20,7 @@ class GetNewsItemResponder implements GetContentPathCollectionDelegate
     /** @var TwigEnvironment */
     private $twig;
 
-    /** @var string */
+    /** @var string|null */
     private $slug;
     /** @var Content|null */
     private $entry;
@@ -48,7 +48,7 @@ class GetNewsItemResponder implements GetContentPathCollectionDelegate
 
     public function contentRetrieved(ContentPathCollection $collection) : void
     {
-        foreach ($collection as $item) {
+        foreach ($collection->all() as $item) {
             $entry = $item->filterMetaEqualTo('slug', $this->slug);
 
             if (! $entry) {

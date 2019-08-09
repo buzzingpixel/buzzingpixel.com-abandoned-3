@@ -167,8 +167,10 @@ class Pagination
                 return null;
             }
 
+            $prevPage = (string) $this->prevPage();
+
             $this->calcPrevPageLink = $this->prevPage() > 1 ?
-                $this->base() . '/page/' . $this->prevPage() . $this->queryString() :
+                $this->base() . '/page/' . $prevPage . $this->queryString() :
                 $this->base() . $this->queryString();
         }
 
@@ -190,7 +192,9 @@ class Pagination
             return null;
         }
 
-        return $this->base() . '/page/' . $this->nextPage() . $this->queryString();
+        $nextPage = (string) $this->nextPage();
+
+        return $this->base() . '/page/' . $nextPage . $this->queryString();
     }
 
     public function firstPageLink() : ?string
@@ -213,7 +217,7 @@ class Pagination
         return $this->base() . '/page/' . $this->totalPages() . $this->queryString();
     }
 
-    /** @var mixed[] */
+    /** @var mixed[]|null */
     private $calcPagesArray;
 
     /**

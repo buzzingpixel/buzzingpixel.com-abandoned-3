@@ -29,7 +29,7 @@ class GetNewsItemAction
      */
     public function __invoke(ServerRequestInterface $request) : ResponseInterface
     {
-        $this->responder->setSlug($request->getAttribute('slug'));
+        $this->responder->setSlug((string) $request->getAttribute('slug'));
 
         $this->scribbleApi->getContentPathCollection('News', $this->responder);
 
