@@ -18,8 +18,13 @@ return [
                     'style' => 'light',
                 ],
                 [
+                    'href' => 'https://packagist.org/packages/buzzingpixel/ansel-craft',
+                    'content' => 'Packagist',
+                    'style' => 'light',
+                ],
+                [
                     'href' => 'https://plugins.craftcms.com/ansel',
-                    'content' => 'Craft Plugin Store ($79)',
+                    'content' => 'Plugin Store ($79)',
                 ],
             ],
         ],
