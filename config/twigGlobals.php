@@ -57,13 +57,13 @@ return [
 
     'nav' => [
         'persistentItems' => [
-            [
-                'svgIconTemplate' => 'Svg/CartIcon.svg',
-                'href' => '/cart',
-                'content' => 'Cart',
-                'hasBadgeMarkup' => true,
-                'badgeClass' => 'JS-CartCount',
-            ],
+            // [
+            //     'svgIconTemplate' => 'Svg/CartIcon.svg',
+            //     'href' => '/cart',
+            //     'content' => 'Cart',
+            //     'hasBadgeMarkup' => true,
+            //     'badgeClass' => 'JS-CartCount',
+            // ],
             [
                 'svgIconTemplate' => 'Svg/AccountIcon.svg',
                 'href' => '/account',
