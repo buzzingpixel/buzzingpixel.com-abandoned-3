@@ -3,8 +3,8 @@
 {% set fromNavAreasGlobal = content.getMetaItem('fromNavAreasGlobal') %}
 
 {% if fromNavAreasGlobal %}
-    {% set navItemsLeft = fromNavAreasGlobal['navItemsLeft'] ?? [] %}
-    {% set navItemsRight = fromNavAreasGlobal['navItemsRight'] ?? [] %}
+    {% set navItemsLeft = navAreas[fromNavAreasGlobal]['navItemsLeft'] ?? [] %}
+    {% set navItemsRight = navAreas[fromNavAreasGlobal]['navItemsRight'] ?? [] %}
 {% else %}
     {% set navItemsLeft = content.getMetaItem('navItemsLeft') ?: [] %}
     {% set navItemsRight = content.getMetaItem('navItemsRight') ?: [] %}
