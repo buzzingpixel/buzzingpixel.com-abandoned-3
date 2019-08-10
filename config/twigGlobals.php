@@ -7,6 +7,24 @@ return [
     'siteName' => 'BuzzingPixel.com',
     'socialMedia' => ['twitterHandle' => 'buzzingpixel'],
 
+    'titleAreas' => [
+        'anselCraft' => [
+            'title' => 'Ansel',
+            'titleSmall' => 'for Craft CMS',
+            'actionButtons' => [
+                [
+                    'href' => 'https://github.com/buzzingpixel/ansel-craft',
+                    'content' => 'GitHub',
+                    'style' => 'light',
+                ],
+                [
+                    'href' => 'https://plugins.craftcms.com/ansel',
+                    'content' => 'Craft Plugin Store ($79)',
+                ],
+            ],
+        ],
+    ],
+
     'nav' => [
         'persistentItems' => [
             [

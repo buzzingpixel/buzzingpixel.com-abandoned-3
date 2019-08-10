@@ -7,6 +7,7 @@
     "watch": [
         "assetsSource/templates/**",
         "config/**",
+        "content/**",
         "src/**"
     ],
     "watchUsesPolling": true

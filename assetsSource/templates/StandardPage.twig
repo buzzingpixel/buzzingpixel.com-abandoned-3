@@ -16,8 +16,14 @@
 {% endif %}
 
 {% block content %}
-    {% include 'PageBuilder/_Includer.twig' with {
-        contentCollection: contentCollection,
-        hasHeadingBackground: hasHeadingBackground
-    } only %}
+    <div class="StandardPage">
+        <div class="StandardPage__Inner">
+
+        {% include 'PageBuilder/_Includer.twig' with {
+            contentCollection: contentCollection,
+            hasHeadingBackground: hasHeadingBackground
+        } only %}
+
+        </div>
+    </div>
 {% endblock %}

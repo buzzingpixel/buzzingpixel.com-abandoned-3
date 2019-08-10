@@ -1,0 +1,23 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content content #}
+{# @var array titleAreas #}
+
+{% set fromTitleAreasGlobal = content.getMetaItem('fromTitleAreasGlobal') %}
+
+{% if fromTitleAreasGlobal %}
+    {% set thisTitleAreasGlobal = titleAreas[fromTitleAreasGlobal] ?? [] %}
+    {% set title = thisTitleAreasGlobal['title'] ?? '' %}
+    {% set titleSmall = thisTitleAreasGlobal['titleSmall'] ?? '' %}
+    {% set actionButtons = thisTitleAreasGlobal['actionButtons'] ?? [] %}
+{% else %}
+    {% set title = content.getMetaItem('title') ?: '' %}
+    {% set titleSmall = content.getMetaItem('titleSmall') ?: '' %}
+    {% set actionButtons = content.getMetaItem('actionButtons') ?: [] %}
+{% endif %}
+
+<div class="StandardPage__TitleArea">
+    {% include 'Components/TitleArea.twig' with {
+        title: title,
+        titleSmall: titleSmall,
+        titleActionButtons: actionButtons,
+    } %}
+</div>
