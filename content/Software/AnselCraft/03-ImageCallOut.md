@@ -8,17 +8,13 @@
         }
     ],
     "image": {
-        "src": "/content-images/ansel-craft/ansel-craft-desktop.jpg",
-        "srcset": "/content-images/ansel-craft/ansel-craft-desktop.jpg 1x, /content-images/ansel-craft/ansel-craft-desktop-2x.jpg 2x",
+        "src": "/content-images/ansel-craft/ansel2-craft-desktop.png",
+        "srcset": "/content-images/ansel-craft/ansel2-craft-desktop.png 1x, /content-images/ansel-craft/ansel2-craft-desktop-2x.png 2x",
         "alt": "",
         "sources": [
             {
-                "srcset": "/content-images/ansel-craft/ansel-craft-mobile.jpg 1x, /content-images/ansel-craft/ansel-craft-mobile-2x.jpg 2x",
+                "srcset": "/content-images/ansel-craft/ansel2-craft-mobile.png 1x, /content-images/ansel-craft/ansel2-craft-mobile-2x.png 2x",
                 "media": "(min-width: 1px) and (max-width: 424px)"
-            },
-            {
-                "srcset": "/content-images/ansel-craft/ansel-craft-tablet.jpg 1x, /content-images/ansel-craft/ansel-craft-tablet-2x.jpg 2x",
-                "media": "(min-width: 425px) and (max-width: 744px)"
             }
         ]
     }
