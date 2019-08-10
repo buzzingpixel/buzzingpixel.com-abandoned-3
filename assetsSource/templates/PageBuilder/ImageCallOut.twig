@@ -1,0 +1,9 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content content #}
+
+{% include 'Layers/ImageCalllOut.twig' with {
+    heading: content.getMetaItem('heading') ?: '',
+    subHeading: content.getMetaItem('subHeading') ?: '',
+    ctas: content.getMetaItem('ctas') ?: [],
+    content: content.html,
+    image: content.getMetaItem('image') ?: {},
+} only %}

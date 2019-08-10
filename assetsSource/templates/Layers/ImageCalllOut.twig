@@ -1,0 +1,52 @@
+{% set heading = heading ?? '' %}
+{% set subHeading = subHeading ?? '' %}
+{% set content = content ?? '' %}
+{% set ctas = ctas ?? [] %}
+{% set image = image ?? {} %}
+
+<section class="ImageCallOut">
+    <div class="ImageCallOut__Inner">
+        <div class="ImageCallOut__ContentArea">
+            {% if heading %}
+                <h2 class="ImageCallOut__Heading">{{ heading|smartypants }}</h2>
+            {% endif %}
+            {% if subHeading %}
+                <h3 class="ImageCallOut__SubHeading">{{ subHeading|smartypants }}</h3>
+            {% endif %}
+            {% if content %}
+                <div class="ImageCallOut__Content">
+                    {{ content|smartypants }}
+                </div>
+            {% endif %}
+            {% if ctas|length %}
+                <div class="ImageCallOut__CTAs">
+                    {% for cta in ctas %}
+                        <a
+                            href="{{ cta.href }}"
+                            class="button ImageCallOut__CTAButton"
+                        >
+                            {{ cta.content|smartypants }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="ImageCallOut__Image">
+            <picture>
+                {% set sources = image['sources'] ?? [] %}
+                {% for source in sources %}
+                    <source
+                        srcset="{{ source.srcset }}"
+                        media="{{ source.media }}"
+                    >
+                {% endfor %}
+                <img
+                    src="{{ image.src }}"
+                    srcset="{{ image.srcset }}"
+                    alt="{{ image.alt }}"
+                    class="ImageCallOut__ImageTag"
+                >
+            </picture>
+        </div>
+    </div>
+</section>
