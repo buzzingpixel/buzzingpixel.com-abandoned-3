@@ -1,0 +1,57 @@
+{% set modules = modules ?? [] %}
+
+<section class="UserFeedbackModules">
+    <div class="UserFeedbackModules__Inner">
+        {% for module in modules %}
+            <div class="UserFeedbackModules__Module">
+                <div class="UserFeedbackModules__ModuleInner">
+                    <header class="UserFeedbackModules__ModuleHeader">
+                        <div class="UserFeedbackModules__ModuleImage">
+                            <picture>
+                                <img
+                                    src="{{ module.image.src }}"
+                                    srcset="{{ module.image.srcset }}"
+                                    alt="{{ module.name }}"
+                                    class="UserFeedbackModules__ImageTag"
+                                >
+                            </picture>
+                        </div>
+                        <div class="UserFeedbackModules__ModuleHeaderContent">
+                            {% if module['nameHref'] is defined %}
+                                <a
+                                    href="{{ module.nameHref }}"
+                                    class="UserFeedbackModules__ModuleHeaderTitle"
+                                >
+                                    {{ module.name|smartypants }}
+                                </a>
+                            {% else %}
+                                <span
+                                    class="UserFeedbackModules__ModuleHeaderTitle"
+                                >
+                                    {{ module.name|smartypants }}
+                                </span>
+                            {% endif %}
+                            {% if module['positionHref'] is defined %}
+                                <a
+                                    href="{{ module.positionHref }}"
+                                    class="UserFeedbackModules__ModuleHeaderPosition"
+                                >
+                                    {{ module.position|smartypants }}
+                                </a>
+                            {% else %}
+                                <span
+                                    class="UserFeedbackModules__ModuleHeaderPosition"
+                                >
+                                    {{ module.position|smartypants }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </header>
+                    <blockquote class="UserFeedbackModules__Quote">
+                        {{ module.quote|smartypants }}
+                    </blockquote>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

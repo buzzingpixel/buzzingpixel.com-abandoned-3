@@ -1,0 +1,3 @@
+{% include 'Layers/UserFeedbackModules.twig' with {
+    modules: content.getMetaItem('modules') ?: [],
+} only %}
