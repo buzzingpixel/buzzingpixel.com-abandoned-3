@@ -31,22 +31,24 @@
                 </div>
             {% endif %}
         </div>
-        <div class="ImageCallOut__Image">
-            <picture>
-                {% set sources = image['sources'] ?? [] %}
-                {% for source in sources %}
-                    <source
-                        srcset="{{ source.srcset }}"
-                        media="{{ source.media }}"
+        <div class="ImageCallOut__ImageWrapper">
+            <div class="ImageCallOut__Image">
+                <picture>
+                    {% set sources = image['sources'] ?? [] %}
+                    {% for source in sources %}
+                        <source
+                            srcset="{{ source.srcset }}"
+                            media="{{ source.media }}"
+                        >
+                    {% endfor %}
+                    <img
+                        src="{{ image.src }}"
+                        srcset="{{ image.srcset }}"
+                        alt="{{ image.alt }}"
+                        class="ImageCallOut__ImageTag"
                     >
-                {% endfor %}
-                <img
-                    src="{{ image.src }}"
-                    srcset="{{ image.srcset }}"
-                    alt="{{ image.alt }}"
-                    class="ImageCallOut__ImageTag"
-                >
-            </picture>
+                </picture>
+            </div>
         </div>
     </div>
 </section>

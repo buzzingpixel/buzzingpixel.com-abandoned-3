@@ -1,7 +1,6 @@
 {
     "layerType": "ImageCallOut",
     "heading": "Your Images Transformed",
-    "subHeading": "Lorem Sub Heading",
     "ctas": [
         {
             "href": "https://plugins.craftcms.com/ansel",
