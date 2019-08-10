@@ -13,6 +13,8 @@
         {% switch layerType %}
             {% case 'TitleArea' %}
                 {% include 'PageBuilder/TitleArea.twig' with payload only %}
+            {% case 'SubTitlePageNav' %}
+                {% include 'PageBuilder/SubTitlePageNav.twig' with payload only %}
             {% case 'ShowCase' %}
                 {% include 'PageBuilder/ShowCase.twig' with payload only %}
             {% case 'CallOut' %}

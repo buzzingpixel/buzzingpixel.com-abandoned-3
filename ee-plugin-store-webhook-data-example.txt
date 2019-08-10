@@ -1,0 +1,7 @@
+[
+    created => 1556579230, // a timestamp representing when the item was purchased
+    license_number => 'bd2f6da4-405a-4df0-9575-e0b6dd4f8697', // a unique license number
+    name => 'Your Add-on', // the name of the item
+    sku => 'DEV_YOUR_ADD_ON', // a unique SKU of the item
+    url_title => 'your-add-on', // the URL title of the item
+]

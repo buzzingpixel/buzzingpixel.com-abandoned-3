@@ -1,0 +1,21 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content content #}
+
+{% set fromNavAreasGlobal = content.getMetaItem('fromNavAreasGlobal') %}
+
+{% if fromNavAreasGlobal %}
+    {% set navItemsLeft = fromNavAreasGlobal['navItemsLeft'] ?? [] %}
+    {% set navItemsRight = fromNavAreasGlobal['navItemsRight'] ?? [] %}
+{% else %}
+    {% set navItemsLeft = content.getMetaItem('navItemsLeft') ?: [] %}
+    {% set navItemsRight = content.getMetaItem('navItemsRight') ?: [] %}
+{% endif %}
+
+{% set activeHref = content.getMetaItem('activeHref') ?: null %}
+
+<div class="StandardPage__SubTitlePageNav">
+    {% include 'Components/SubTitlePageNav.twig' with {
+        navItemsLeft: navItemsLeft,
+        navItemsRight: navItemsRight,
+        activeHref: activeHref,
+    } only %}
+</div>
