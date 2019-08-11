@@ -7,7 +7,7 @@
         "sources": [
             {
                 "srcset": "/content-images/ansel-craft/ansel2-field-type-mobile.png 1x, /content-images/ansel-craft/ansel2-field-type-mobile-2x.png 2x",
-                "media": "(min-width: 1px) and (max-width: 424px)"
+                "media": "(min-width: 1px) and (max-width: 700px)"
             }
        ]
     }
