@@ -1,0 +1,37 @@
+{% set heading = heading ?? '' %}
+{% set image = image ?? {} %}
+{% set content = content ?? '' %}
+
+<section class="PrimaryImageTextHalfBlack">
+    <div class="PrimaryImageTextHalfBlack__Inner">
+        {% if heading %}
+            <h2 class="PrimaryImageTextHalfBlack__Heading">
+                {{ heading|smartypants }}
+            </h2>
+        {% endif %}
+        <div class="PrimaryImageTextHalfBlack__ImageContainer">
+            <div class="PrimaryImageTextHalfBlack__Image">
+                <picture>
+                    {% set sources = image['sources'] ?? [] %}
+                    {% for source in sources %}
+                        <source
+                            srcset="{{ source.srcset }}"
+                            media="{{ source.media }}"
+                        >
+                    {% endfor %}
+                    <img
+                        src="{{ image.src }}"
+                        srcset="{{ image.srcset }}"
+                        alt="{{ heading }}"
+                        class="PrimaryImageTextHalfBlack__ImageTag"
+                    >
+                </picture>
+            </div>
+        </div>
+        <div class="PrimaryImageTextHalfBlack__Content">
+            <div class="PrimaryImageTextHalfBlack__ContentInner">
+                {{ content|smartypants|widont }}
+            </div>
+        </div>
+    </div>
+</section>

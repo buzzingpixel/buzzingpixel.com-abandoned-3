@@ -1,3 +1,5 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content content #}
+
 {% include 'Layers/UserFeedbackModules.twig' with {
     modules: content.getMetaItem('modules') ?: [],
 } only %}

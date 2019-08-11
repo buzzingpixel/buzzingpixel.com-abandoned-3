@@ -1,0 +1,7 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content content #}
+
+{% include 'Layers/PrimaryImageTextHalfBlack.twig' with {
+    heading: content.getMetaItem('heading') ?: '',
+    image: content.getMetaItem('image') ?: {},
+    content: content.html,
+} only %}
