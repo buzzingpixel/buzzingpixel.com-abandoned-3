@@ -1,0 +1,76 @@
+.UserFeedbackModules__Inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.UserFeedbackModules__Module {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.35);
+    margin: 14px 6px;
+    max-width: 565px;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+}
+
+.UserFeedbackModules__ModuleInner {
+    padding: 30px 14px;
+    position: relative;
+    z-index: 2;
+}
+
+.UserFeedbackModules__ModuleHeader {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.UserFeedbackModules__Module:before {
+    background-color: var(--AquaHaze);
+    content: ' ';
+    display: block;
+    height: 112px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.UserFeedbackModules__ModuleHeaderContent {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.UserFeedbackModules__ModuleImage {
+    border: 1px solid var(--LightGray);
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.UserFeedbackModules__ModuleHeaderTitle {
+    color: var(--Nandor);
+    font-size: 26px;
+    font-weight: var(--PrimaryFontBoldWeight);
+    left: 144px;
+    position: absolute;
+    bottom: 64px;
+}
+
+.UserFeedbackModules__ModuleHeaderPosition {
+    color: var(--MineShaft);
+    font-size: 16px;
+    left: 144px;
+    position: absolute;
+    top: 84px;
+}
+
+.UserFeedbackModules__Quote {
+    padding: 0;
+}

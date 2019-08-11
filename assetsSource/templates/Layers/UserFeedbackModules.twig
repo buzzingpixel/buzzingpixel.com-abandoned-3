@@ -21,34 +21,28 @@
                                 <a
                                     href="{{ module.nameHref }}"
                                     class="UserFeedbackModules__ModuleHeaderTitle"
-                                >
-                                    {{ module.name|smartypants }}
-                                </a>
+                                    target="_blank"
+                                >{{ module.name|smartypants }}</a>
                             {% else %}
                                 <span
                                     class="UserFeedbackModules__ModuleHeaderTitle"
-                                >
-                                    {{ module.name|smartypants }}
-                                </span>
+                                >{{ module.name|smartypants }}</span>
                             {% endif %}
                             {% if module['positionHref'] is defined %}
                                 <a
                                     href="{{ module.positionHref }}"
                                     class="UserFeedbackModules__ModuleHeaderPosition"
-                                >
-                                    {{ module.position|smartypants }}
-                                </a>
+                                    target="_blank"
+                                >{{ module.position|smartypants }}</a>
                             {% else %}
                                 <span
                                     class="UserFeedbackModules__ModuleHeaderPosition"
-                                >
-                                    {{ module.position|smartypants }}
-                                </span>
+                                >{{ module.position|smartypants }}</span>
                             {% endif %}
                         </div>
                     </header>
                     <blockquote class="UserFeedbackModules__Quote">
-                        {{ module.quote|smartypants }}
+                        {{ module.quote|smartypants|widont }}
                     </blockquote>
                 </div>
             </div>
