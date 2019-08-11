@@ -27,6 +27,8 @@
                 {% include 'PageBuilder/UserFeedbackModules.twig' with payload only %}
             {% case 'PrimaryImageTextHalfBlack' %}
                 {% include 'PageBuilder/PrimaryImageTextHalfBlack.twig' with payload only %}
+            {% case 'Image' %}
+                {% include 'PageBuilder/Image.twig' with payload only %}
             {% default %}
                 {% if getenv('DEV_MODE') == 'true' %}
                     <div style="text-align: center;">

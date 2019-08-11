@@ -1,0 +1,22 @@
+{% set backgroundColor = backgroundColor ?? false %}
+{% set image = image ?? {} %}
+
+<section class="Image{% if backgroundColor %} Image--HasBackgroundColor{{ backgroundColor }}{% endif %}">
+    <div class="Image__Inner">
+        <picture>
+            {% set sources = image['sources'] ?? [] %}
+            {% for source in sources %}
+                <source
+                    srcset="{{ source.srcset }}"
+                    media="{{ source.media }}"
+                >
+            {% endfor %}
+            <img
+                src="{{ image.src }}"
+                srcset="{{ image.srcset }}"
+                alt="{{ image['alt'] ?? '' }}"
+                class="Image__ImgTag"
+            >
+        </picture>
+    </div>
+</section>

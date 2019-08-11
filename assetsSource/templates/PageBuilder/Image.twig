@@ -1,0 +1,6 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content content #}
+
+{% include 'Layers/Image.twig' with {
+    backgroundColor: content.getMetaItem('backgroundColor'),
+    image: content.getMetaItem('image') ?: {},
+} only %}
