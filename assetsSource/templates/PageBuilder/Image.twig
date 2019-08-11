@@ -3,4 +3,5 @@
 {% include 'Layers/Image.twig' with {
     backgroundColor: content.getMetaItem('backgroundColor'),
     image: content.getMetaItem('image') ?: {},
+    noShadow: content.getMetaItem('noShadow'),
 } only %}
