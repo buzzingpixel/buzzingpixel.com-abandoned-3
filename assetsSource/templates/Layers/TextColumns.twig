@@ -1,0 +1,19 @@
+{% set backgroundColor = backgroundColor ?? false %}
+{% set columns = columns ?? [] %}
+
+<section class="TextColumns{% if backgroundColor %} TextColumns--HasBackgroundColor{{ backgroundColor }}{% endif %}">
+    <div class="TextColumns__Inner">
+        {% for column in columns %}
+            <div class="TextColumns__Column">
+                {% if column['heading'] is defined and column['heading'] %}
+                    <h2 class="TextColumns__ColumnHeading">
+                        {{ column.heading|smartypants }}
+                    </h2>
+                {% endif %}
+                {% if column['content'] is defined and column['content'] %}
+                    {{ column.content|markdownParse|smartypants }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,6 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content content #}
+
+{% include 'Layers/TextColumns.twig' with {
+    backgroundColor: content.getMetaItem('backgroundColor'),
+    columns: content.getMetaItem('columns'),
+} only %}
