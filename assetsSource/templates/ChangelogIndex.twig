@@ -58,7 +58,47 @@
                         pagination: pagination
                     } only %}
 
-                    TODO: Build out page
+                    <div class="StandardPage__SidebarContentContainer">
+                        <aside class="StandardPage__Sidebar">
+                            <ul class="StandardPage__SidebarLinks">
+                                {% for release in allContent %}
+                                    <li class="StandardPage__SidebarLink">
+                                        <a href="{{ pagination.base }}/{{ release.getVersion }}" class="StandardPage__SidebarLinkTag">
+                                            {{ release.getVersion }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </aside>
+                        <div class="StandardPage__SidebarContent">
+                            {% for release in pageContent %}
+                                <div class="BoxContainer">
+                                    {% set permalink %}
+                                        <a href="{{ pagination.base }}/{{ release.getVersion }}">
+                                            Permalink
+                                        </a>
+                                    {% endset %}
+
+                                    {% include "Layers/Box.twig" with {
+                                        sidebar: [
+                                            {
+                                                key: 'version',
+                                                value: '<strong>' ~ release.getVersion ~ '</strong>',
+                                            },
+                                            {
+                                                key: 'released',
+                                                value: '<strong>' ~ release.getDate ~ '</strong>',
+                                            },
+                                            {
+                                                value: permalink,
+                                            },
+                                        ],
+                                        content: release.toHtml,
+                                    } only %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
 
                     {% include 'Components/Pagination.twig' with {
                         pagination: pagination
