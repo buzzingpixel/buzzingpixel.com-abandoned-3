@@ -44,10 +44,6 @@ return [
             ],
             'navItemsRight' => [
                 [
-                    'href' => '/software/ansel-craft/license',
-                    'content' => 'License',
-                ],
-                [
                     'href' => '/software/ansel-craft/documentation',
                     'content' => 'Documentation',
                 ],
