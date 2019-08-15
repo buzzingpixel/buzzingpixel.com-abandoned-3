@@ -1,0 +1,24 @@
+.StandardPage__SidebarContentContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.StandardPage__Sidebar {
+    position: relative;
+    width: 140px;
+}
+
+.StandardPage__Sidebar:before {
+    background-color: var(--LightGray);
+    content: ' ';
+    display: block;
+    height: calc(100% - 40px);
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 2px;
+}
+
+.StandardPage__SidebarContent {
+    width: calc(100% - 140px);
+}
