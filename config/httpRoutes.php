@@ -28,4 +28,4 @@ $r->get('/news/{slug}', GetNewsItemAction::class);
 
 // Ansel Craft routes
 $r->get('/software/ansel-craft', GetAnselCraftAction::class);
-$r->get('/software/ansel-craft/changelog', GetAnselCraftChangelog::class);
+$r->get('/software/ansel-craft/changelog[/page/{page:\d+}]', GetAnselCraftChangelog::class);

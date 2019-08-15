@@ -61,6 +61,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/coding-standard" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/erusev/parsedown" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/felixfbecker/advanced-json-rpc" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/felixfbecker/language-server-protocol" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/filp/whoops" />
@@ -76,7 +77,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jean85/pretty-package-versions" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/jeremeamia/superclosure" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jeremeamia/SuperClosure" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mailgun/mailgun-php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mandrill/mandrill" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/michelf/php-smartypants" />
@@ -84,6 +85,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/middlewares/request-handler" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/middlewares/utils" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/middlewares/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mjerwin/parseachangelog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mrclay/jsmin-php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mrclay/minify" />

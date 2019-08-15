@@ -1,0 +1,73 @@
+{# @var \MJErwin\ParseAChangelog\Release[] pageContent #}
+{# @var \MJErwin\ParseAChangelog\Release[] allContent #}
+{# @var \App\Common\Pagination\Pagination pagination #}
+
+{% set titleAreasGlobal = titleAreasGlobal ?? null %}
+
+{% if titleAreasGlobal %}
+    {% set thisTitleAreasGlobal = titleAreas[titleAreasGlobal] ?? [] %}
+    {% set title = thisTitleAreasGlobal['title'] ?? '' %}
+    {% set titleSmall = thisTitleAreasGlobal['titleSmall'] ?? '' %}
+    {% set actionButtons = thisTitleAreasGlobal['actionButtons'] ?? [] %}
+{% else %}
+    {% set title = 'TODO' %}
+    {% set titleSmall = 'TODO' %}
+    {% set actionButtons = [] %}
+{% endif %}
+
+{% set navAreasGlobal = navAreasGlobal ?? null %}
+{% set activeHref = activeHref ?? '' %}
+
+{% if navAreasGlobal %}
+    {% set navItemsLeft = navAreas[navAreasGlobal]['navItemsLeft'] ?? [] %}
+    {% set navItemsRight = navAreas[navAreasGlobal]['navItemsRight'] ?? [] %}
+{% else %}
+    {% set navItemsLeft = [] %}
+    {% set navItemsRight = [] %}
+{% endif %}
+
+{% extends '_Layout.twig' %}
+
+{% block content %}
+    <div class="StandardPage">
+        <div class="StandardPage__Inner">
+
+            {# StandardPage__TitleArea #}
+            <div class="StandardPage__TitleArea">
+                {% include 'Components/TitleArea.twig' with {
+                    title: title,
+                    titleSmall: titleSmall,
+                    titleActionButtons: actionButtons,
+                } %}
+            </div>
+            {# /StandardPage__TitleArea #}
+
+            <div class="StandardPage__SubTitlePageNav">
+                {% include 'Components/SubTitlePageNav.twig' with {
+                    navItemsLeft: navItemsLeft,
+                    navItemsRight: navItemsRight,
+                    activeHref: activeHref,
+                } only %}
+            </div>
+
+            {# StandardPage__Content #}
+            <div class="StandardPage__Content">
+                <div class="StandardPage__ContentInner">
+
+                    {% include 'Components/Pagination.twig' with {
+                        pagination: pagination
+                    } only %}
+
+                    TODO: Build out page
+
+                    {% include 'Components/Pagination.twig' with {
+                        pagination: pagination
+                    } only %}
+
+                </div>
+            </div>
+            {# /StandardPage__Content #}
+
+        </div>
+    </div>
+{% endblock %}
