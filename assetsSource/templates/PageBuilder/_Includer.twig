@@ -31,6 +31,8 @@
                 {% include 'PageBuilder/Image.twig' with payload only %}
             {% case 'TextColumns' %}
                 {% include 'PageBuilder/TextColumns.twig' with payload only %}
+            {% case 'CTAs' %}
+                {% include 'PageBuilder/CTAs.twig' with payload only %}
             {% default %}
                 {% if getenv('DEV_MODE') == 'true' %}
                     <div style="text-align: center;">

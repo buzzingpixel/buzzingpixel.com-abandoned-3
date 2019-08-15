@@ -1,0 +1,15 @@
+{% set ctas = ctas ?? [] %}
+
+<section class="CTAs">
+    <div class="CTAs__Inner">
+        {% for button in ctas %}
+            {% set lightButton = button['style'] is defined and button['style'] == 'light' %}
+            <a
+                href="{{ button.href }}"
+                class="button CTAs__Button{% if lightButton %} button--light{% else %} button--colored{% endif %}"
+            >
+                {{ button.content|smartypants }}
+            </a>
+        {% endfor %}
+    </div>
+</section>

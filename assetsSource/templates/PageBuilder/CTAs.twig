@@ -1,0 +1,14 @@
+{# @var \BuzzingPixel\Scribble\Services\GetContentFromFile\Content content #}
+
+{% set fromTitleAreasGlobalActionButtons = content.getMetaItem('fromTitleAreasGlobalActionButtons') %}
+
+{% if fromTitleAreasGlobalActionButtons %}
+    {% set thisTitleAreasGlobal = titleAreas[fromTitleAreasGlobalActionButtons] ?? [] %}
+    {% set ctas = thisTitleAreasGlobal['actionButtons'] ?? [] %}
+{% else %}
+    {% set ctas = content.getMetaItem('ctas') ?: [] %}
+{% endif %}
+
+{% include 'Layers/CTAs.twig' with {
+    ctas: ctas,
+} only %}
