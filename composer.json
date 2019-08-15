@@ -14,6 +14,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/buzzingpixel/scribble.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/tjdraper/parseachangelog.git"
         }
     ],
     "require": {
@@ -43,7 +47,7 @@
         "buzzingpixel/twig-widont": "^1.0",
         "cocur/slugify": "^3.2",
         "hyn/frontmatter": "dev-master",
-        "mjerwin/parseachangelog": "^0.9.3",
+        "mjerwin/parseachangelog": "dev-fix-reader-calculation",
         "symfony/var-dumper": "^4.2",
         "thecodingmachine/safe": "^0.1.16",
         "timostamm/text-truncation": "dev-master"
