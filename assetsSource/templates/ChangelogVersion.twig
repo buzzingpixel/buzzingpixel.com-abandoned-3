@@ -1,0 +1,96 @@
+{# @var \MJErwin\ParseAChangelog\Release release #}
+
+{% set titleAreasGlobal = titleAreasGlobal ?? null %}
+
+{% if titleAreasGlobal %}
+    {% set thisTitleAreasGlobal = titleAreas[titleAreasGlobal] ?? [] %}
+    {% set title = thisTitleAreasGlobal['title'] ?? '' %}
+    {% set titleSmall = thisTitleAreasGlobal['titleSmall'] ?? '' %}
+    {% set actionButtons = thisTitleAreasGlobal['actionButtons'] ?? [] %}
+{% else %}
+    {% set title = 'TODO' %}
+    {% set titleSmall = 'TODO' %}
+    {% set actionButtons = [] %}
+{% endif %}
+
+{% set navAreasGlobal = navAreasGlobal ?? null %}
+{% set activeHref = activeHref ?? '' %}
+
+{% if navAreasGlobal %}
+    {% set navItemsLeft = navAreas[navAreasGlobal]['navItemsLeft'] ?? [] %}
+    {% set navItemsRight = navAreas[navAreasGlobal]['navItemsRight'] ?? [] %}
+{% else %}
+    {% set navItemsLeft = [] %}
+    {% set navItemsRight = [] %}
+{% endif %}
+
+{% extends '_Layout.twig' %}
+
+{% block content %}
+    <div class="StandardPage">
+        <div class="StandardPage__Inner">
+
+            {# StandardPage__TitleArea #}
+            <div class="StandardPage__TitleArea">
+                {% include 'Components/TitleArea.twig' with {
+                    title: title,
+                    titleSmall: titleSmall,
+                    titleActionButtons: actionButtons,
+                } %}
+            </div>
+            {# /StandardPage__TitleArea #}
+
+            <div class="StandardPage__SubTitlePageNav">
+                {% include 'Components/SubTitlePageNav.twig' with {
+                    navItemsLeft: navItemsLeft,
+                    navItemsRight: navItemsRight,
+                    activeHref: activeHref,
+                } only %}
+            </div>
+
+            {% include 'Components/BreadCrumbs.twig' with {
+                breadcrumbs: [
+                    {
+                        href: base,
+                        content: breadcrumbBaseTitle,
+                    },
+                    {
+                        content: 'Viewing Version',
+                    },
+                ],
+            } %}
+
+            {# StandardPage__Content #}
+            <div class="StandardPage__Content StandardPage__Content--Max1600">
+                <div class="StandardPage__ContentInner">
+                    <div class="BoxContainer">
+                        {% set permalink %}
+                            <a href="{{ base }}/{{ release.getVersion }}">
+                                Permalink
+                            </a>
+                        {% endset %}
+
+                        {% include "Layers/Box.twig" with {
+                            sidebar: [
+                                {
+                                    key: 'version',
+                                    value: '<strong>' ~ release.getVersion ~ '</strong>',
+                                },
+                                {
+                                    key: 'released',
+                                    value: '<strong>' ~ release.getDate ~ '</strong>',
+                                },
+                                {
+                                    value: permalink,
+                                },
+                            ],
+                            content: release.toHtml,
+                        } only %}
+                    </div>
+                </div>
+            </div>
+            {# /StandardPage__Content #}
+
+        </div>
+    </div>
+{% endblock %}

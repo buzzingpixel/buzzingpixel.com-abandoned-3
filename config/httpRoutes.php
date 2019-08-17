@@ -6,7 +6,8 @@ use App\Http\HomePage\GetHomePage\HomePageAction;
 use App\Http\News\GetNewsAction;
 use App\Http\News\GetNewsItemAction;
 use App\Http\Software\AnselCraft\GetAnselCraftAction;
-use App\Http\Software\AnselCraft\GetAnselCraftChangelog;
+use App\Http\Software\AnselCraft\GetAnselCraftChangelogAction;
+use App\Http\Software\AnselCraft\GetAnselCraftChangelogVersionAction;
 use FastRoute\RouteCollector;
 
 /**
@@ -28,4 +29,5 @@ $r->get('/news/{slug}', GetNewsItemAction::class);
 
 // Ansel Craft routes
 $r->get('/software/ansel-craft', GetAnselCraftAction::class);
-$r->get('/software/ansel-craft/changelog[/page/{page:\d+}]', GetAnselCraftChangelog::class);
+$r->get('/software/ansel-craft/changelog[/page/{page:\d+}]', GetAnselCraftChangelogAction::class);
+$r->get('/software/ansel-craft/changelog/{version}', GetAnselCraftChangelogVersionAction::class);

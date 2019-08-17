@@ -11,19 +11,19 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function max;
 
-class GetAnselCraftChangelog
+class GetAnselCraftChangelogAction
 {
     /** @var ParseChangelogFromJson */
-    private $parseChangelogFromJson;
+    private $parser;
     /** @var StandardChangelogResponder */
-    private $standardChangelogResponder;
+    private $responder;
 
     public function __construct(
-        ParseChangelogFromJson $parseChangelogFromJson,
-        StandardChangelogResponder $standardChangelogResponder
+        ParseChangelogFromJson $parser,
+        StandardChangelogResponder $responder
     ) {
-        $this->parseChangelogFromJson     = $parseChangelogFromJson;
-        $this->standardChangelogResponder = $standardChangelogResponder;
+        $this->parser    = $parser;
+        $this->responder = $responder;
     }
 
     /**
@@ -39,12 +39,12 @@ class GetAnselCraftChangelog
 
         $page = max(1, (int) $page);
 
-        $this->parseChangelogFromJson->parse(
+        $this->parser->parse(
             'https://raw.githubusercontent.com/buzzingpixel/ansel-craft/master/changelog.md',
-            $this->standardChangelogResponder
+            $this->responder
         );
 
-        return $this->standardChangelogResponder->createResponseBasedOnInput(
+        return $this->responder->createResponseBasedOnInput(
             10,
             $page,
             '/software/ansel-craft/changelog',

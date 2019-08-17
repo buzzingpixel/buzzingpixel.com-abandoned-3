@@ -4,18 +4,16 @@ declare(strict_types=1);
 
 namespace App\Common\Http;
 
-use App\Common\Changelog\ParseChangelogFromJsonHandler;
-use App\Common\Pagination\Pagination;
+use App\Common\Changelog\ParseChangelogVersionFromJsonHandler;
 use corbomite\http\exceptions\Http404Exception;
 use corbomite\twig\TwigEnvironment;
 use MJErwin\ParseAChangelog\Release;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
-use function array_slice;
-use function count;
+use function dd;
 
-class StandardChangelogResponder implements ParseChangelogFromJsonHandler
+class StandardChangelogVersionResponder implements ParseChangelogVersionFromJsonHandler
 {
     /** @var ResponseFactoryInterface */
     private $responseFactory;
@@ -38,65 +36,45 @@ class StandardChangelogResponder implements ParseChangelogFromJsonHandler
         $this->hasFailed = true;
     }
 
-    /** @var Release[] */
-    private $content = [];
+    /** @var Release|null */
+    private $release;
 
-    /**
-     * @inheritDoc
-     */
-    public function parsingSucceeded(array $content) : void
+    public function parsingSucceeded(Release $release) : void
     {
-        $this->content = $content;
+        $this->release = $release;
     }
 
     /**
      * @throws Http404Exception
      */
     public function createResponseBasedOnInput(
-        int $limit,
-        int $page,
         string $base,
         string $metaTitle,
         string $titleAreasGlobal,
-        string $navAreasGlobal
+        string $navAreasGlobal,
+        string $breadcrumbBaseTitle
     ) : ResponseInterface {
         if ($this->hasFailed) {
-            throw new Http404Exception();
-        }
-
-        if ($page < 1) {
-            throw new Http404Exception();
-        }
-
-        $pageZeroIndex = $page - 1;
-
-        $pageContent = array_slice($this->content, $pageZeroIndex * $limit, $limit);
-
-        if (! $pageContent) {
             throw new Http404Exception();
         }
 
         $response = $this->responseFactory->createResponse(200)
             ->withHeader('Content-Type', 'text/html');
 
-        $pagination = (new Pagination())->withBase($base)
-            ->withCurrentPage($page)
-            ->withPerPage($limit)
-            ->withTotalResults(count($this->content));
-
         try {
             $response->getBody()->write(
-                $this->twig->renderAndMinify('ChangelogIndex.twig', [
-                    'pageContent' => $pageContent,
-                    'allContent' => $this->content,
-                    'pagination' => $pagination,
+                $this->twig->renderAndMinify('ChangelogVersion.twig', [
+                    'release' => $this->release,
                     'metaTitle' => $metaTitle,
                     'titleAreasGlobal' => $titleAreasGlobal,
                     'navAreasGlobal' => $navAreasGlobal,
                     'activeHref' => $base,
+                    'base' => $base,
+                    'breadcrumbBaseTitle' => $breadcrumbBaseTitle,
                 ])
             );
         } catch (Throwable $e) {
+            dd($e);
             throw new Http404Exception();
         }
 

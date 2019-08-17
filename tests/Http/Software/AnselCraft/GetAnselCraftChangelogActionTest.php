@@ -6,7 +6,7 @@ namespace BuzzingPixel\Tests\Http\Software\AnselCraft;
 
 use App\Common\Changelog\ParseChangelogFromJson;
 use App\Common\Http\StandardChangelogResponder;
-use App\Http\Software\AnselCraft\GetAnselCraftChangelog;
+use App\Http\Software\AnselCraft\GetAnselCraftChangelogAction;
 use corbomite\http\exceptions\Http404Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -14,9 +14,9 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
-class GetAnselCraftChangelogTest extends TestCase
+class GetAnselCraftChangelogActionTest extends TestCase
 {
-    /** @var GetAnselCraftChangelog */
+    /** @var GetAnselCraftChangelogAction */
     private $object;
 
     /** @var MockObject|ResponseInterface */
@@ -50,7 +50,7 @@ class GetAnselCraftChangelogTest extends TestCase
 
         $this->request = $request;
 
-        $this->object = new GetAnselCraftChangelog(
+        $this->object = new GetAnselCraftChangelogAction(
             $this->parseChangelogFromJson,
             $this->standardChangelogResponder
         );
