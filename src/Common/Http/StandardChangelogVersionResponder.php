@@ -11,7 +11,6 @@ use MJErwin\ParseAChangelog\Release;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
-use function dd;
 
 class StandardChangelogVersionResponder implements ParseChangelogVersionFromJsonHandler
 {
@@ -54,7 +53,7 @@ class StandardChangelogVersionResponder implements ParseChangelogVersionFromJson
         string $navAreasGlobal,
         string $breadcrumbBaseTitle
     ) : ResponseInterface {
-        if ($this->hasFailed) {
+        if ($this->hasFailed || ! $this->release) {
             throw new Http404Exception();
         }
 
@@ -62,6 +61,8 @@ class StandardChangelogVersionResponder implements ParseChangelogVersionFromJson
             ->withHeader('Content-Type', 'text/html');
 
         try {
+            $metaTitle = $this->release->getVersion() . ' | ' . $metaTitle;
+
             $response->getBody()->write(
                 $this->twig->renderAndMinify('ChangelogVersion.twig', [
                     'release' => $this->release,
@@ -74,7 +75,6 @@ class StandardChangelogVersionResponder implements ParseChangelogVersionFromJson
                 ])
             );
         } catch (Throwable $e) {
-            dd($e);
             throw new Http404Exception();
         }
 
