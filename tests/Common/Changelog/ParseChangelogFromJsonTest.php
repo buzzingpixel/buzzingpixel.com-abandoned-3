@@ -26,13 +26,13 @@ class ParseChangelogFromJsonTest extends TestCase
             /** @var bool */
             public $hasFailed = false;
 
-            /** @var Release[] */
-            public $content = [];
-
             public function parsingFailed() : void
             {
                 $this->hasFailed = true;
             }
+
+            /** @var Release[] */
+            public $content = [];
 
             /**
              * @param Release[] $content
