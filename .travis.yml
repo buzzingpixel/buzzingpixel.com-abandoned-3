@@ -19,5 +19,13 @@ install:
 before_script: composer install --no-suggest --no-progress
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpcs config
+  - vendor/bin/phpcs public
+  - vendor/bin/phpcs src
+  - vendor/bin/phpcs tests
+  - vendor/bin/phpcs phinx.php
+  - vendor/bin/phpcs cli
+  - vendor/bin/php-cs-fixer fix --verbose --dry-run --using-cache=no
+  - vendor/bin/psalm --no-cache
   - vendor/bin/phpstan analyse src --no-interaction --no-progress
+  - vendor/bin/phpunit --coverage-text --colors=never
