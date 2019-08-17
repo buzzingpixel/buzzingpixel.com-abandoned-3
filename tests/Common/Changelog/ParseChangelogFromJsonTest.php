@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\App\Common\Changelog;
+namespace Tests\Common\Changelog;
 
 use App\Common\Changelog\ParseChangelogFromJson;
 use App\Common\Changelog\ParseChangelogFromJsonHandler;

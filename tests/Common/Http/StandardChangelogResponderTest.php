@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\App\Common\Http;
+namespace Tests\Common\Http;
 
 use App\Common\Http\StandardChangelogResponder;
 use App\Common\Pagination\Pagination;
