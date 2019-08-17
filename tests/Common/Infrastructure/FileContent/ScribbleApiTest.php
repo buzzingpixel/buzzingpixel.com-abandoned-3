@@ -56,7 +56,7 @@ class ScribbleApiTest extends TestCase
                 self::equalTo($handler)
             );
 
-        $this->scribbleApi->getContentFromFile('/testInputPath', $handler);
+        $this->scribbleApi->getContentFromFile(DIRECTORY_SEPARATOR . 'testInputPath', $handler);
     }
 
     /**
@@ -76,7 +76,7 @@ class ScribbleApiTest extends TestCase
             );
 
         $this->scribbleApi->getContentFromPath(
-            '/testInputPath',
+            DIRECTORY_SEPARATOR . 'testInputPath',
             $handler,
             ['md', 'txt']
         );
@@ -99,7 +99,7 @@ class ScribbleApiTest extends TestCase
             );
 
         $this->scribbleApi->getContentPathCollection(
-            '/testInputPath',
+            DIRECTORY_SEPARATOR . 'testInputPath',
             $handler,
             ['md', 'txt']
         );
