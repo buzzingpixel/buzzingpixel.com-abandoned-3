@@ -34,7 +34,6 @@ if [[ -z "${cmd}" ]]; then
     valid=true;
     printf "${Green}The following commands are available:\n${Yellow}";
     printf "  ./dev up\n";
-    printf "  ./dev run\n";
     printf "  ./dev down\n";
     printf "  ./dev test\n";
     printf "  ./dev phpstan [args]\n";
@@ -47,31 +46,22 @@ if [[ -z "${cmd}" ]]; then
 fi
 
 ## If command is up or run, we need to run the docker containers and install composer and yarn dependencies
-if [[ "${cmd}" = "up" ]] || [[ "${cmd}" = "run" ]]; then
+if [[ "${cmd}" = "up" ]]; then
     valid=true;
-    docker kill node-buzzingpixel
-    docker-compose -f docker-compose.yml -p buzzingpixel up -d
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "cd /app && composer install"
-    docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn"
-
-    ## If the command is not run, go ahead and do fab build only
-    if [[ "${cmd}" != "run" ]]; then
-        docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab --build-only"
-    fi
+    docker kill node-buzzingpixel;
+    docker-compose -f docker-compose.yml -p buzzingpixel up -d;
+    # docker exec -it --user root --workdir /app php-buzzingpixel bash -c "cd /app && composer install";
+    composer install;
+    docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn";
+    docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab --build-only";
 
     (cd platform && yarn && cd ..)
-fi
-
-## If the command is run, then we want to run the build process and watch for changes
-if [[ "${cmd}" = "run" ]]; then
-    valid=true;
-    docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab"
 fi
 
 ## If the command is down, then we want to stop docker
 if [[ "${cmd}" = "down" ]]; then
     valid=true;
-    docker-compose -f docker-compose.yml -p buzzingpixel down
+    docker-compose -f docker-compose.yml -p buzzingpixel down;
 fi
 
 if [[ "${cmd}" = "psalm" ]] || [[ "${cmd}" = "test" ]]; then
@@ -79,7 +69,8 @@ if [[ "${cmd}" = "psalm" ]] || [[ "${cmd}" = "test" ]]; then
     if [[ "${cmd}" = "test" ]]; then
         printf "${Yellow}Running psalm...${Reset}\n";
     fi
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/psalm && /app/vendor/bin/psalm ${allArgsExceptFirst}"
+    # docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/psalm && /app/vendor/bin/psalm ${allArgsExceptFirst}";
+    chmod +x vendor/bin/psalm && vendor/bin/psalm ${allArgsExceptFirst};
 fi
 
 ## Run phpstan if requested
@@ -88,7 +79,8 @@ if [[ "${cmd}" = "phpstan" ]] || [[ "${cmd}" = "test" ]]; then
     if [[ "${cmd}" = "test" ]]; then
         printf "${Yellow}Running phpstan...${Reset}\n";
     fi
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpstan && /app/vendor/bin/phpstan analyse src ${allArgsExceptFirst}"
+    # docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpstan && /app/vendor/bin/phpstan analyse src ${allArgsExceptFirst}";
+    chmod +x vendor/bin/phpstan && vendor/bin/phpstan analyse src ${allArgsExceptFirst};
 fi
 
 ## Run phpunit if requested
@@ -97,33 +89,34 @@ if [[ "${cmd}" = "phpunit" ]] || [[ "${cmd}" = "test" ]]; then
     if [[ "${cmd}" = "test" ]]; then
         printf "${Yellow}Running phpunit...${Reset}\n";
     fi
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpunit && /app/vendor/bin/phpunit --configuration /app/phpunit.xml ${allArgsExceptFirst}"
+    # docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpunit && /app/vendor/bin/phpunit --configuration /app/phpunit.xml ${allArgsExceptFirst}";
+    chmod +x vendor/bin/phpunit && /app/vendor/bin/phpunit --configuration phpunit.xml ${allArgsExceptFirst};
 fi
 
 ## Run yarn if requested
 if [[ "${cmd}" = "yarn" ]]; then
     valid=true;
-    docker kill node-buzzingpixel
-    docker-compose -f docker-compose.yml -p buzzingpixel up -d
-    docker exec -it --user root --workdir /app node-buzzingpixel bash -c "${allArgs}"
+    docker kill node-buzzingpixel;
+    docker-compose -f docker-compose.yml -p buzzingpixel up -d;
+    docker exec -it --user root --workdir /app node-buzzingpixel bash -c "${allArgs}";
 fi
 
 ## Run cli if requested
 if [[ "${cmd}" = "cli" ]]; then
     valid=true;
-    docker exec -it --user root --workdir /app-www php-buzzingpixel bash -c "php ${allArgs}"
+    docker exec -it --user root --workdir /app-www php-buzzingpixel bash -c "php ${allArgs}";
 fi
 
 ## Run composer if requested
 if [[ "${cmd}" = "composer" ]]; then
     valid=true;
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "${allArgs}"
+    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "${allArgs}";
 fi
 
 ## Login to a container if requested
 if [[ "${cmd}" = "login" ]]; then
     valid=true;
-    docker exec -it --user root ${secondArg}-buzzingpixel bash
+    docker exec -it --user root ${secondArg}-buzzingpixel bash;
 fi
 
 ## If there was no valid command found, warn user

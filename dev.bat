@@ -10,7 +10,6 @@ if "%cmd%" == "" (
     set valid=true
     echo The following commands are available:
     echo   .\dev up
-    echo   .\dev run
     echo   .\dev down
     echo   .\dev test
     echo   .\dev phpstan [args]
@@ -27,12 +26,6 @@ if "%cmd%" == "up" (
     call :up
 )
 
-if "%cmd%" == "run" (
-    set valid=true
-    call :up
-    docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab"
-)
-
 if "%cmd%" == "down" (
     set valid=true
     docker-compose -f docker-compose.yml -p buzzingpixel down
@@ -41,26 +34,26 @@ if "%cmd%" == "down" (
 if "%cmd%" == "test" (
     set valid=true
     echo Running psalm...
-    call :psalm
+    .\vendor\bin\psalm %allArgsExceptFirst%
     echo Running phpstan...
-    call :phpstan
+    .\vendor\bin\phpstan analyse src %allArgsExceptFirst%
     echo Running phpunit...
-    call :phpunit
+    .\vendor\bin\phpunit --configuration phpunit.xml %allArgsExceptFirst%
 )
 
 if "%cmd%" == "psalm" (
     set valid=true
-    call :psalm
+    .\vendor\bin\psalm %allArgsExceptFirst%
 )
 
 if "%cmd%" == "phpstan" (
     set valid=true
-    call :phpstan
+    .\vendor\bin\phpstan analyse src %allArgsExceptFirst%
 )
 
 if "%cmd%" == "phpunit" (
     set valid=true
-    call :phpunit
+    .\vendor\bin\phpunit --configuration phpunit.xml %allArgsExceptFirst%
 )
 
 if "%cmd%" == "yarn" (
@@ -95,29 +88,11 @@ exit /b 0
 :: Up function
 :up
     docker-compose -f docker-compose.yml -p buzzingpixel up -d
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "cd /app && composer install"
+    composer install
     docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn"
-
-    if not "%cmd%" == "run" (
-        docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab --build-only"
-    )
+    docker exec -it --user root --workdir /app node-buzzingpixel bash -c "yarn run fab --build-only"
 
     cd platform
     call yarn
     cd ..
-exit /b 0
-
-:: psalm function
-:psalm
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/psalm && /app/vendor/bin/psalm %allArgsExceptFirst%"
-exit /b 0
-
-:: phpstan function
-:phpstan
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpstan && /app/vendor/bin/phpstan analyse src %allArgsExceptFirst%"
-exit /b 0
-
-:: phpunit function
-:phpunit
-    docker exec -it --user root --workdir /app php-buzzingpixel bash -c "chmod +x /app/vendor/bin/phpunit && /app/vendor/bin/phpunit --configuration /app/phpunit.xml %allArgsExceptFirst%"
 exit /b 0
