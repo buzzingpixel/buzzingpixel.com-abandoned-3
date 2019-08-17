@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-return [
-    // Example:
-    /*
+// Example:
+/*return [
     'my-group' => [
         'description' => 'Brief description to display on CLI',
         'commands' => [
@@ -12,8 +11,9 @@ return [
                 'description' => 'Brief command description',
                 'class' => SomeClass::class,
                 'method' => 'optionalMethod', // Uses __invoke if no method provided
-            ]
+            ],
         ],
     ],
-    */
-];
+];*/
+
+return [];

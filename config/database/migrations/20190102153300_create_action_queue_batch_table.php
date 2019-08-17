@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
+// phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ClassFileName.NoMatch
+
 class CreateActionQueueBatchTable extends AbstractMigration
 {
     public function change() : void
