@@ -35,6 +35,7 @@ if [[ -z "${cmd}" ]]; then
     printf "  ./dev up\n";
     printf "  ./dev down\n";
     printf "  ./dev test\n";
+    printf "  ./dev phpcs [args]\n";
     printf "  ./dev psalm [args]\n";
     printf "  ./dev phpstan [args]\n";
     printf "  ./dev phpunit [args]\n"
@@ -73,6 +74,7 @@ if [[ "${cmd}" = "phpcs" ]] || [[ "${cmd}" = "test" ]]; then
     ./vendor/bin/phpcs tests;
     ./vendor/bin/phpcs phinx.php;
     ./vendor/bin/phpcs cli;
+    ./vendor/bin/php-cs-fixer fix --dry-run --verbose;
 fi
 
 if [[ "${cmd}" = "psalm" ]] || [[ "${cmd}" = "test" ]]; then

@@ -48,6 +48,7 @@ if "%cmd%" == "test" (
     .\vendor\bin\phpcs tests
     .\vendor\bin\phpcs phinx.php
     .\vendor\bin\phpcs cli
+    .\vendor\bin\php-cs-fixer fix --dry-run --verbose
     echo.
     echo Running psalm...
     .\vendor\bin\psalm %allArgsExceptFirst%
@@ -67,6 +68,7 @@ if "%cmd%" == "phpcs" (
     .\vendor\bin\phpcs tests
     .\vendor\bin\phpcs phinx.php
     .\vendor\bin\phpcs cli
+    .\vendor\bin\php-cs-fixer fix --dry-run --verbose
 )
 
 if "%cmd%" == "psalm" (
